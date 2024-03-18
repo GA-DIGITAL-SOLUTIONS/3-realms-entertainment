@@ -2,9 +2,12 @@ from django.db import models
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
+    genere = models.CharField(max_length=100)
     description = models.TextField()
+    runtime = models.DecimalField(max_digits=10,decimal_places=2)
+    actor = models.CharField(max_length = 100)
+    actress = models.CharField(max_length = 100)
     director = models.CharField(max_length=100)
-    star_cast = models.TextField()
     release_date = models.DateField()
     trailer_link = models.URLField()
     image = models.ImageField(upload_to='movie_images/', blank=True, null=True)
