@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
 <style>
 
 .section-counter {
-    background-image: url('includes/background-image.jpg');
+    background-image: url('{% get_media_prefix %}counter-bg.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 0;
