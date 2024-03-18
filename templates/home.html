@@ -231,6 +231,7 @@ body {
     </div>
 </div>
 
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
 let slideIndex = 1;
 showSlide(slideIndex);
@@ -261,6 +262,10 @@ var swiper = new Swiper('.swiper-container', {
     slidesPerView: 'auto',
     spaceBetween: 20,
     loop: true, // Enable loop mode
+    autoplay: {
+        delay: 5000, // Autoplay delay in milliseconds
+        disableOnInteraction: false, // Enable autoplay even if the user interacts with the swiper
+    },
     navigation: {
         nextEl: '.next',
         prevEl: '.prev',
