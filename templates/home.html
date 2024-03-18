@@ -195,7 +195,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="basic">{% include "header.html" %}</div>
+		<div class="header">{% include "header.html" %}</div>
 		<div class="slideshow-container">
 			<div
 				class="slide"
@@ -236,6 +236,7 @@
 			<a class="prev" onclick="changeSlide(-1)">&#10094;</a>
 			<a class="next" onclick="changeSlide(1)">&#10095;</a>
 		</div>
+        
         <div class="latest-movie-cont">
             <h2>Latest Movies</h2>
 		<div class="movies-container swiper-container">
@@ -257,6 +258,8 @@
 				{% endfor %}
 			</div>
 		</div>
+
+        <div class="counter">{% include "counter.html" %}</div>
     </div>
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 		<script>

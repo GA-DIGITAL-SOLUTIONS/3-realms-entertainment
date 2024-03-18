@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sliding Banners</title>
+<style>
+
+.section-counter {
+    background-image: url('includes/background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+}
+
+.section-counter .container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.section-counter .left-column {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.section-counter .counter {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-counter .counter h3 {
+    margin-top: 0;
+}
+
+.section-counter .counter-item {
+    width: 100%;
+    float: left;
+}
+
+.section-counter .counter-item div {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+.counter-item {
+    text-align:center;
+}
+
+</style>
+</head>
+<body>
+    <section class="section-counter">
+    <div class="container">
+        <div class="left-column">
+            <div class="counter">
+                <h3>Counter 1</h3>
+                <div class="counter-item" id="counter1">0</div>
+            </div>
+            <div class="counter">
+                <h3>Counter 2</h3>
+                <div class="counter-item" id="counter2">0</div>
+            </div>
+            <div class="counter">
+                <h3>Counter 3</h3>
+                <div class="counter-item" id="counter3">0</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // JavaScript for counters
+    function startCounters() {
+        startCounter(100, 'counter1'); // Start Counter 1 from 100
+        startCounter(200, 'counter2'); // Start Counter 2 from 200
+        startCounter(300, 'counter3'); // Start Counter 3 from 300
+    }
+
+    function startCounter(startValue, elementId) {
+        var counterElement = document.getElementById(elementId);
+        var count = 0;
+        var interval = setInterval(function () {
+            count++;
+            counterElement.innerHTML = count;
+            if (count === startValue) {
+                clearInterval(interval);
+            }
+        }, 50);
+    }
+
+    startCounters(); // Start all counters
+</script>
+</body>
+</html>
