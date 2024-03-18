@@ -15,9 +15,9 @@ def movie_synopsis(request, movie_id):
         movie = Movie.objects.get(pk=movie_id)
     except Movie.DoesNotExist:
         movie = None
-
-    theaters = Theater.objects.all()
-
+    locations = Theater.objects.values_list('location', flat=True).distinct()
+    
+    theaters = Theater.objects.filter(showtimes__movie=movie).distinct()
     location_filter = request.GET.get('location')
     if location_filter:
         theaters = theaters.filter(location=location_filter)
@@ -25,5 +25,6 @@ def movie_synopsis(request, movie_id):
     context = {
         'movie': movie,
         'theaters': theaters,
+        'locations': locations,
     }
     return render(request, 'movie_synopsis.html', context)

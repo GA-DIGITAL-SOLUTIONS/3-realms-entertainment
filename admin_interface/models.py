@@ -9,6 +9,7 @@ class Movie(models.Model):
     actress = models.CharField(max_length = 100)
     director = models.CharField(max_length=100)
     release_date = models.DateField()
+    language = models.CharField(max_length = 50)
     trailer_link = models.URLField()
     image = models.ImageField(upload_to='movie_images/', blank=True, null=True)
 
