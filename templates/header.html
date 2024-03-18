@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Header with Columns</title>
+		<!-- Link to Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+		<style>
+			/* Shared Styles */
+			.header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 20px 50px;
+				background-color: #191717;
+				margin: 0;
+			}
+
+			.logo-column img {
+				max-width: 80px;
+				height: 100px;
+			}
+
+			.menu-column ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.menu-column ul li {
+				display: inline-block;
+				margin-right: 20px;
+				font-size: 20px;
+			}
+
+			.menu-column ul li a {
+				color: #cdcaca;
+				text-decoration: none;
+			}
+
+			.social-media-column {
+				display: flex;
+			}
+
+			.social-icon {
+				margin-right: 10px;
+				color: #cdcaca;
+				font-size: 20px;
+			}
+
+			.search-column form {
+				display: flex;
+			}
+
+			.search-column input[type="text"] {
+				padding: 8px;
+				border: 1px solid #ccc;
+				border-radius: 4px 0 0 4px;
+			}
+
+			.search-column button {
+				padding: 8px 15px;
+				background-color: #db8126;
+				color: white;
+				border: 1px solid #db8126;
+				border-radius: 0 4px 4px 0;
+				cursor: pointer;
+			}
+
+			.search-column button:hover {
+				background-color: #dbbf4e;
+			}
+
+			.list {
+				color: white !important;
+			}
+
+			/* Media Queries for Responsive Design */
+			@media only screen and (max-width: 768px) {
+				.menu-column ul {
+					display: none;
+					position: absolute;
+					top: 60px;
+					left: 0;
+					background-color: #191717;
+					width: 100%;
+					text-align: center;
+				}
+
+				.menu-column ul.active {
+					display: block;
+				}
+
+				.menu-column ul li {
+					display: block;
+					margin: 10px 0;
+				}
+
+				.menu-column ul li a {
+					color: #cdcaca;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="header">
+			<div class="logo-column">
+				<img src="{% get_media_prefix  %}/logo.svg" alt="Logo" />
+			</div>
+			<div class="menu-column">
+				<nav class="menu-column">
+					<ul>
+						<li class="list"><a href="#">Home</a></li>
+						<li class="list"><a href="#">About</a></li>
+						<li class="list"><a href="#">Contact</a></li>
+						<li class="list"><a href="#">Portfolio</a></li>
+						<li class="list"><a href="#">Latest Movies</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<div class="search-column">
+				<form action="#" method="GET">
+					<input type="text" name="search" placeholder="Search..." />
+					<button type="submit">Search</button>
+				</form>
+			</div>
+		</header>
+
+		<script>
+			const menuToggle = document.querySelector(".menu-column");
+			const nav = document.querySelector(".menu-column ul");
+
+			menuToggle.addEventListener("click", () => {
+				nav.classList.toggle("active");
+			});
+		</script>
+	</body>
+</html>
