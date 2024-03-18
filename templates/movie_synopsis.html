@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Synopsis</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+    .container {
+        padding: 50px;
+    }
+    .movie-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+    .movie-details {
+        display: flex;
+        align-items: center;
+    }
+    .movie-info {
+        text-align: center;
+    }
+    .movie-info p {
+        margin: 0;
+        text-align:left;
+    }
+    .movie-info .icon {
+        font-size: 24px;
+        margin-bottom: 5px;
+        text-align:left;
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #f68d2e;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    .theatre-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+    .theatre-column {
+        width: 18%;
+        text-align: center;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .theatre-column img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+    .book-now-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .city, .show-time, .theatre {
+        color:black;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="movie-image">
+                <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-left mb-5">{{ movie.title }}</h1>
+            <div class="movie-details">
+                <div class="col-md-4 movie-info">
+                    <i class="fas fa-film icon"></i>
+                    <p class="movie-info">{{ movie.genre }}</p>
+                </div>
+                <div class="col-md-4 movie-info">
+                    <i class="fas fa-clock icon"></i>
+                    <p>{{ movie.duration }} mins</p>
+                </div>
+                <div class="col-md-4 movie-info">
+                    <i class="far fa-calendar-alt icon"></i>
+                    <p>{{ movie.release_date }}</p>
+                </div>
+            </div>
+            <div class="text-left mt-4">
+                <p>{{ movie.description }}</p>
+            </div>
+            <div class="text-left mt-4">
+                <h4>Cast:</h4>
+                <p><strong>Actor:</strong> {{ movie.actor }}</p>
+                <p><strong>Actress:</strong> {{ movie.actress }}</p>
+                <p><strong>Director:</strong> {{ movie.director }}</p>
+            </div>
+            <div class="text-left mt-4">
+                <h4>Language:</h4>
+                <p>{{ movie.language }}</p>
+            </div>
+            <div class="text-left mt-4">
+                <a href="#" class="button">Watch Trailer</a>
+                <a href="#" class="button">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="filter-dropdown">
+        <form method="GET" action="{% url 'movie_synopsis' movie.id %}">
+            <label for="location-filter">Filter by Location:</label>
+            <select id="location-filter" name="location">
+                <option value="">All Locations</option>
+                {% for theater in theaters %}
+                    <option value="{{ theater.location }}">{{ theater.location }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Apply Filter</button>
+        </form>
+    </div>
+
+    <div class="theatre-container">
+        {% for theater in theaters %}
+        <div class="theatre-column">
+            <h4>{{ theater.name }}</h4>
+            <p>Location: {{ theater.location }}</p>
+            <p>Capacity: {{ theater.capacity }}</p>
+            <p>Address: {{ theater.address }}</p>
+            <h5>Showtimes:</h5>
+            <ul>
+                {% for showtime in theater.showtimes.all %}
+                    <li>{{ showtime.time }}</li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="book-now-button">Book Now</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
