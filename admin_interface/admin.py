@@ -5,8 +5,8 @@ from django.contrib.admin import AdminSite
 
 class CustomAdminSite(AdminSite):
     site_header = '3 Realms Entertainment'
-    site_title = '3-Realms'
     index_title = '3-Realms'
+
 
 custom_admin_site = CustomAdminSite(name='custom_admin')
 
