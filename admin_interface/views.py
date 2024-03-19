@@ -1,14 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Movie, Theater, Showtime
+from .models import *
 
 def movie_list(request):
-    locations = Theater.objects.values_list('location', flat=True).distinct()
-    location = request.GET.get('location')
-    if location:
-        movies = Movie.objects.filter(showtimes__theater__location__icontains=location).distinct()
-    else:
-        movies = Movie.objects.all()
-    return render(request, 'home.html', {'movies': movies, 'locations': locations, 'selected_location': location})
+    upmovies = UpcomingMovie.objects.all()
+    movies = Movie.objects.all()
+    return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies})
 
 def movie_synopsis(request, movie_id):
     try:
@@ -28,3 +24,17 @@ def movie_synopsis(request, movie_id):
         'locations': locations,
     }
     return render(request, 'movie_synopsis.html', context)
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def portfolio(request):
+    return render(request, 'portfolio.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+

@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer with Columns</title>
+<link rel="stylesheet" href="styles.css">
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    /* CSS for footer */
+    .footer {
+        background-color: #191717;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .footer-columns {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .footer-column {
+        flex: 1;
+        margin: 10px;
+        text-align:left;
+    }
+
+    .footer-logo {
+        max-width: 100px;
+        height: auto;
+    }
+
+    .footer-description {
+        color:  #cdcaca;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .contact-details, .quick-links {
+        list-style-type: none;
+        padding: 0;
+        color: #cdcaca;
+        text-align:left;
+       
+    }
+
+    .contact-details li  {
+        margin-bottom: 10px;
+         color:#cdcaca;
+         border-bottom:1px solid #cdcaca;
+        margin:2px 50px 5px 0px;
+    }
+
+ .quick-links li {
+        margin-bottom: 10px;
+         color:#cdcaca;
+         border-bottom:1px solid #cdcaca;
+        margin:2px 50px 20px 0px;
+    }
+    .contact-details h4, .quick-links h4 {
+        color:  #cdcaca;
+    text-align:left;
+        font-size: 16px;
+    }
+
+    .quick-links a {
+        text-decoration: none;
+        color:  #cdcaca;
+    }
+
+    .quick-links a:hover {
+        text-decoration: underline;
+    }
+    h4 {
+        color: #cdcaca;
+        font-size:20px;
+    }
+    
+      .social-media-icons {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+    
+}
+
+.social-media-icons li {
+    display: inline-block;
+    margin-right: 10px;
+    color:#cdcaca;/* Adjust margin as needed */
+}
+
+.social-media-icons li:last-child {
+    margin-right: 0; /* Remove margin from last item */
+}
+.fab, p {
+    color:#cdcaca;
+}
+.line-text {
+    display: inline-block;
+}
+
+.phone-number, .email {
+    border-bottom: 1px solid #000; /* Add your desired border-bottom style */
+}
+
+@media screen and (max-width: 600px) {
+
+.footer-column {
+    padding:0px !important;
+}
+
+    .contact-details li  {
+        margin-bottom: 10px;
+         color:#cdcaca;
+         border-bottom:1px solid #cdcaca;
+        margin-right:0px;
+    }
+     .quick-links li {
+        margin-bottom: 10px;
+         color:#cdcaca;
+         border-bottom:1px solid #cdcaca;
+        margin:2px 20px 20px 0px;
+    }
+}
+</style>
+</head>
+<body>
+
+<footer class="footer">
+    <div class="footer-1">
+    <div class="footer-columns">
+        <!-- Column 1: Logo and Short Description -->
+        <div class="footer-column" style="padding:30px;">
+            <img src="{% get_media_prefix  %}/logo.svg" alt="Logo" class="footer-logo">
+            <p class="footer-description">3 Realms Entertainment – Your Passport to Indian Cinema. Explore the magic with our curated selection of Bollywood blockbusters and independent gems. Join us in fostering cultural exchange through the transformative power of storytelling.
+</p>
+        </div>
+        
+        <!-- Column 2: Contact Details -->
+   <div class="footer-column">
+            <h4>&#8230; Contact Details</h4>
+            <ul class="contact-details">
+               <li>
+    <i class="fas fa-phone" style="margin-right: 10px;"></i>
+    <p class="line-text"><b>Phone:</b> <span class="phone-number"><br>15257675948</span></p>
+</li>
+
+  <li>
+    <i class="fas fa-envelope" style="margin-right: 10px;"></i>
+    <p class="line-text"><b>Email:</b> <span class="email:"><br>contact@3realmsentertainment.com</span></p>
+</li>
+
+<li>
+    <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>
+    <p class="line-text"><b>Address:</b> <span class="address:"> <br>Wisthoffweg Essen 45139,Germany</span></p>
+</li>
+
+            </ul>
+        </div>
+        
+        <!-- Column 3: Quick Links -->
+        <div class="footer-column">
+            <h4>&#8230; Quick Links</h4>
+            <ul class="quick-links">
+                <li><i class="fas fa-angle-double-right"></i> <a href="#">About Us</a></li>
+                
+                <li><i class="fas fa-angle-double-right"></i> <a href="#">Portfolio</a></li>
+                <li><i class="fas fa-angle-double-right"></i> <a href="#">Latest Movies</a></li>
+                 <li><i class="fas fa-angle-double-right"></i> <a href="#">Upcoming Movies</a></li>
+                 <li><i class="fas fa-angle-double-right"></i> <a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="social-media-icons">
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</div>
+<div class="separator">
+    <div class="separator-line"></div>
+</div>
+
+<footer class="copyright">
+  <p>  &copy; Copyright © 2024, 3 Realms Entertainment –  All Rights Reserved.</p>
+
+<p>Design & Developed by <a href="https://www.gadigitalsolutions.com" target="_blank" style="color:#db8126;">GA Digital Solutions</a></p>
+
+</footer>
+</footer>
+
+</body>
+</html>

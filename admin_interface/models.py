@@ -11,7 +11,7 @@ class Movie(models.Model):
     release_date = models.DateField()
     language = models.CharField(max_length = 50)
     trailer_link = models.URLField()
-    image = models.ImageField(upload_to='movie_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='movie_images/')
 
     def __str__(self):
         return self.title
@@ -30,3 +30,13 @@ class Showtime(models.Model):
 
     def __str__(self):
         return f"{self.movie.title} - {self.theater.name} - {self.time.strftime('%Y-%m-%d %H:%M')}"
+
+
+
+class UpcomingMovie(models.Model):
+    title = models.CharField(max_length=100)
+    release_date = models.DateField(null=True,blank=True)
+    image = models.ImageField(upload_to='movie_images/')
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Page</title>
+<style>
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.banner {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.banner-text h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+/* Style for tabs */
+.tab {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #db8126;
+}
+
+.tab img {
+    width: 100px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.7; /* Default opacity */
+    transition: opacity 0.3s ease;
+}
+
+.tab img:hover {
+    opacity: 1; /* Hover opacity */
+}
+
+/* Style for movies container */
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie {
+    margin: 10px;
+}
+
+.movie img {
+    width: 350px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    transition: opacity 0.3s ease;
+}
+
+.movie img:hover {
+    opacity: 0.7; /* Hover opacity */
+}
+
+/* Style for movie titles */
+.movie img {
+    position: relative;
+}
+
+.movie img::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    background-color: rgba(255, 0, 0, 0.7); /* Red color with opacity */
+    color: white; /* Text color */
+    font-size: 16px; /* Adjust font size as needed */
+    text-align: center;
+    text-transform: capitalize; /* Convert to title case */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie img:hover::after {
+    opacity: 1;
+}
+
+.title {
+    color: Red;
+    Background-color: white;
+}
+
+.potfolio-section {
+    padding: 50px;
+    background-color: #191717;
+}
+
+body {
+    background-color: #191717;
+    margin: 0;
+    padding: 0;
+}
+
+/* Media Queries for responsive design */
+
+/* For screens up to 768px wide (tablets) */
+@media (max-width: 768px) {
+    .movies {
+        justify-content: center;
+    }
+    
+    .movie img {
+        width: 250px;
+    }
+    
+    .banner-text h1 {
+        font-size: 24px;
+    }
+    .tab {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #db8126;
+}
+}
+
+/* For screens up to 480px wide (phones) */
+@media (max-width: 480px) {
+    .banner-text h1 {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+<body>
+     {% include "header.html" with active_page="portfolio" %}
+    <header>
+    <div class="banner">
+        <img src='{% get_media_prefix %}banners/portfolio-banner.jpg' alt="Banner Image">
+        <div class="banner-text">
+            <h1>Portfolio</h1>
+        </div>
+    </div>
+</header>
+<h1 style="color:white; text-align:center; padding-top:50px;">MOVIES DISTRIBUTION FOR GERMANY</h1>
+<div class="potfolio-section">  
+
+<!-- Tabs for filtering -->
+<div class="tabs">
+  <div class="tab" onclick="filterMovies('all')">All Movies</div>
+  <div class="tab" onclick="filterMovies('telugu')">Telugu Movies</div>
+  <div class="tab" onclick="filterMovies('tamil')">Tamil Movies</div>
+</div>
+
+
+<!-- Container for displaying movies -->
+<div class="movies">
+  <!-- Movie items -->
+  <div class="movie all telugu">
+    <img src="includes/portfolio/Hi Nanna.jpg" alt="Telugu Movie 1" title="Hi Nanna">
+     <img src="includes/portfolio/Hanuman.jpg" alt="Hanuman" data-title="Hanuman" title="Hanuman">
+      <img src="includes/portfolio/Animal.jpg" alt="Animal" data-title="Animal" title="Animal">
+       <img src="includes/portfolio/Bahuballi-2-1.jpg" alt="Bahuballi 2" data-title="Bahuballi 2" title="Bahuballi 2">
+       <img src="includes/portfolio/Adipurush-1.jpg" alt="Adipurush" data-title="Adipurush" title="Adipurush">
+      
+  </div>
+  <div class="movie all tamil">
+  <img src="includes/portfolio/Adipurush-tamil.jpg" alt="Adipurush" data-title="Adipurush" title="Adipurush">
+  <img src="includes/portfolio/Bahuballi2-tamil.jpg" alt="Bahuballi 2" data-title="Bahuballi 2" title="Bahubali 2">
+  <img src="includes/portfolio/Bigil.jpg" alt="Bigil" data-title="Bigil" title="Bigil">
+  <img src="includes/portfolio/Darbar.jpg" alt="Darbar" data-title="Darbar" title="Darbar">
+  <img src="includes/portfolio/Fight Club.jpg" alt="Fight Club" data-title="Fight Club" title="Fight Club">
+      <img src="includes/portfolio/Jailer.jpg" alt="Jailer" data-title="Jailer" title="Jailerr">
+      <img src="includes/portfolio/Kaala.jpg" alt="Kaala" data-title="Kaala" title="Kaala">
+  <img src="includes/portfolio/Kaatru Veliyidai.jpg" alt="Kaatru Veliyidai" data-title="Kaatru Veliyidai" title="Kaatru Veliyidai">
+  <img src="includes/portfolio/RRR.jpg" alt="RRR" data-title="RRR" title="RRR">
+  <img src="includes/portfolio/Saithan.jpg" alt="Saithan" data-title="Saithan" title="Saithan">
+  <img src="includes/portfolio/NGK (Surya).jpg" alt="NGK" data-title="NGK" title="NGK">
+  <img src="includes/portfolio/singam -3.jpg" alt="singam -3" data-title="singam -3" title="singam -3">
+  <img src="includes/portfolio/Sketch.jpg" alt="Sketch" data-title="Sketch" title="Sketch">
+  <img src="includes/portfolio/Theeran Adhigaaram ondru.jpg" alt="Theeran Adhigaaram ondru" data-title="Theeran Adhigaaram ondru" title="Theeran Adhigaaram ondru">
+  <img src="includes/portfolio/Tik Tik Tik.jpg" alt="Tik Tik Tik" data-title="Tik Tik Tik" title="Tik Tik Tik">
+   <img src="includes/portfolio/VIP 2.jpg" alt="VIP 2" data-title="VIP 2" title="VIP 2">
+   <img src="includes/portfolio/Hi Nanna.jpg" alt="Telugu Movie 1" title="Hi Nanna">
+    <img src="includes/portfolio/Animal.jpg" alt="Animal" data-title="Animal" title="Animal">
+     <img src="includes/portfolio/Hanuman.jpg" alt="Hanuman" data-title="Hanuman" title="Hanuman">
+     
+</div>
+
+ 
+  <!-- Add more movie items as needed -->
+</div>
+</div>
+ <div class="footer">{% include "footer.html" %}</div>
+<script>
+    // Function to filter movies based on language
+    function filterMovies(language) {
+        const movies = document.querySelectorAll('.movie');
+        movies.forEach(movie => {
+            if (language === 'all') {
+                movie.style.display = 'block';
+            } else {
+                if (movie.classList.contains(language)) {
+                    movie.style.display = 'block';
+                } else {
+                    movie.style.display = 'none';
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

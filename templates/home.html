@@ -96,7 +96,7 @@
 				font-family: Arial, sans-serif;
 				margin: 0;
 				padding: 0;
-                background-color: #191717;
+                background-color: #191717 !important;
 			}
 
 			
@@ -196,7 +196,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="header">{% include "header.html" %}</div>
+		 {% include "header.html" with active_page="home" %}
 		<div class="slideshow-container">
 			<div
 				class="slide"
@@ -240,28 +240,48 @@
         
         <div class="latest-movie-cont">
             <h2>Latest Movies</h2>
-		<div class="movies-container swiper-container">
-            
-			<div class="swiper-wrapper">
+            <div class="movies-container swiper-container">
+                
+                <div class="swiper-wrapper">
 
-				{% for movie in movies %}
-				<div class="swiper-slide box">
-					<img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
-					<div class="overlay">
-						<h3>{{ movie.title }}</h3>
-						<p>{{ movie.description }}</p>
-						<a href="{{ movie.trailer_link }}" class="watch-now">Watch Now</a>
-						<a href="{% url 'movie_synopsis' movie.id %}" class="book-now"
-							>Book Now</a
-						>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
+                    {% for movie in movies %}
+                    <div class="swiper-slide box">
+                        <img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
+                        <div class="overlay">
+                            <h3>{{ movie.title }}</h3>
+                            <p>{{ movie.description }}</p>
+                            <a href="{{ movie.trailer_link }}" class="watch-now">Watch Now</a>
+                            <a href="{% url 'movie_synopsis' movie.id %}" class="book-now"
+                                >Book Now</a
+                            >
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
 
         <div class="counter">{% include "counter.html" %}</div>
+        <div class="latest-movie-cont">
+            <h2>Upcoming Movies</h2>
+            <div class="movies-container swiper-container">
+                
+                <div class="swiper-wrapper">
+
+                    {% for movie in upmovies %}
+                    <div class="swiper-slide box">
+                        <img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
+                        <div class="overlay">
+                            <h3>{{ movie.title }}</h3>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
     </div>
+    <div class="footer">{% include "footer.html" %}</div>
+    </div>
+
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 		<script>
 			let slideIndex = 1;

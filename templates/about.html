@@ -1,0 +1,301 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>About Us</title>
+		<style>
+			/* CSS for styling */
+			header {
+				background-color: #333;
+				color: #fff;
+				text-align: center;
+				overflow-x: hidden;
+			}
+
+			body {
+				background-color: #191717 !important;
+				margin: 0px;
+				padding: 0px;
+				background-color: #191717;
+				font-family: Arial, sans-serif;
+				overflow-x: hidden;
+			}
+			section {
+				padding: 20px 0;
+			}
+			.container {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				overflow: hidden;
+				padding: 20px;
+			}
+			.container-counter {
+				width: auto;
+				margin: 0px 50px;
+				max-width: 1200px;
+			}
+			.left-image {
+				float: left;
+				width: 45%;
+				margin-bottom: 20px;
+			}
+
+			.right-text {
+				float: right;
+				width: 45%;
+			}
+			.vision-mission {
+				text-align: center;
+				overflow: hidden;
+				margin-top: 50px;
+			}
+			.column-vision-mission {
+				width: 45%;
+				display: inline-block;
+				padding: 0 30px;
+				box-sizing: border-box;
+				margin-bottom: 20px;
+			}
+
+			.column {
+				width: 30%;
+				display: inline-block;
+				padding: 0 30px;
+				box-sizing: border-box;
+				margin-bottom: 20px;
+			}
+			.counter-items {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+			}
+			.counter-item {
+				width: 20%;
+				margin: 5px;
+				background-color: #db8126;
+				padding: 20px;
+				text-align: center;
+				border-radius: 20px;
+				box-sizing: border-box;
+				margin-bottom: 20px;
+			}
+			.counter-item h3 {
+				margin-top: 0;
+			}
+			.counter-item div {
+				font-size: 24px;
+				font-weight: bold;
+			}
+			.social-media-icons {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+				text-align: center;
+				margin-top: 50px;
+			}
+			.social-media-icons li {
+				display: inline-block;
+				margin: 0 10px;
+			}
+			.social-media-icons li:last-child {
+				margin-right: 0;
+			}
+			.social-media-icons li a {
+				color: #fff;
+				font-size: 24px;
+			}
+			.banner {
+				position: relative;
+			}
+			.banner img {
+				width: 100%;
+				height: auto;
+			}
+			.banner-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				color: white;
+				width: 100%;
+			}
+			.banner-text h1 {
+				margin: 0;
+				font-size: 36px;
+			}
+			h2,
+			h3,
+			p {
+				color: #cdcaca;
+			}
+			@media screen and (max-width: 768px) {
+				body {
+					background-color: #191717;
+					margin: 0px;
+					padding: 0px;
+					background-color: #191717;
+					font-family: Arial, sans-serif;
+					overflow-x: hidden !important;
+				}
+				.counter-item {
+					width: 100% !important;
+					margin: 5px;
+					background-color: #db8126;
+					padding: 20px;
+					text-align: center;
+					border-radius: 20px;
+					box-sizing: border-box;
+					margin-bottom: 20px;
+				}
+				.left-image,
+				.right-text,
+				.column {
+					width: 100%;
+					float: none;
+					margin: 0 auto;
+					text-align: center;
+				}
+				.left-image {
+					margin-right: 0;
+					width: auto;
+					padding: 20px;
+					border-radius: 5%;
+				}
+				.counter-item {
+					width: calc(50% - 20px);
+				}
+				.column-vision-mission {
+					width: 100%;
+					display: inline-block;
+					padding: 0 30px;
+					box-sizing: border-box;
+					margin-bottom: 20px;
+				}
+				.banner {
+					width: auto;
+					margin-bottom: 0px;
+				}
+				.header {
+					overflow-x: hidden;
+				}
+				.container-counter {
+					text-align: center;
+				}
+
+				.container {
+					width: auto;
+					max-width: 1200px;
+					margin: 0 auto;
+					overflow: hidden;
+					padding: 20px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+         {% include "header.html" with active_page="about" %}
+		<div>
+			<div class="banner">
+				<img src='{% get_media_prefix %}banners/aboutusbanner.jpg' alt="Banner Image" />
+				<div class="banner-text">
+					<h1>About Us</h1>
+				</div>
+			</div>
+		</div>
+
+		<section>
+			<div class="container">
+				<div class="left-image">
+					<img
+						src='{% get_media_prefix %}banners/about-us-img.jpg'
+						alt="Left Image"
+						style="max-width: 100%; height: auto" />
+				</div>
+				<div class="right-text">
+					<h2>About Us</h2>
+					<p>
+						At 3 Realms Entertainment, we’re dedicated to bringing the vibrant
+						world of Indian cinema to European audiences. Based in Germany, our
+						mission is to enrich cultural exchange through carefully curated
+						films, ranging from Bollywood blockbusters to independent gems.
+					</p>
+					<p>
+						With a commitment to excellence and personalized service, we’re your
+						trusted gateway to Indian cinema, ensuring an unforgettable viewing
+						experience.
+					</p>
+					<p>
+						Fueled by creativity, integrity, and a passion for cinematic
+						excellence, we aim to positively impact the world through the
+						transformative power of storytelling.
+					</p>
+					<p>
+						Join us on a journey to discover, celebrate, and share the magic of
+						Indian cinema with audiences far and wide.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="container">
+				<div class="vision-mission">
+					<h2>Vision & Mission</h2>
+					<div class="column-vision-mission">
+						<h3>Vision</h3>
+						<img src='{% get_media_prefix %}banners/vision.jpg' alt="Vision Image" />
+						<p>
+							To lead the European film distribution sector, introducing
+							audiences to the richness of Indian cinema and using the power of
+							movies to uplift, inform, and amuse.
+						</p>
+					</div>
+					<div class="column-vision-mission">
+						<h3>Mission</h3>
+						<img src='{% get_media_prefix %}banners/mission.jpg' alt="Mission Image" />
+						<p>
+							We’re dedicated to sharing outstanding Indian films with European
+							audiences, guided by our commitment to creativity, integrity, and
+							a profound love for cinema, aiming to enrich lives and inspire
+							positive change through storytelling.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="container-counter" style="width: auto; text-align: center">
+				<div class="counter">
+					<h2>Our Achievements</h2>
+					<p>We have achieved:</p>
+					<div class="counter-items">
+						<div class="counter-item">
+							<h3>Movies Released</h3>
+							<div id="counter1">25+</div>
+						</div>
+						<div class="counter-item">
+							<h3>Partners</h3>
+							<div id="counter2">10+</div>
+						</div>
+						<div class="counter-item">
+							<h3>Cities</h3>
+							<div id="counter3">20+</div>
+						</div>
+						<div class="counter-item">
+							<h3>Theatres</h3>
+							<div id="counter4">50+</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+         <div class="footer">{% include "footer.html" %}</div>
+	</body>
+</html>
