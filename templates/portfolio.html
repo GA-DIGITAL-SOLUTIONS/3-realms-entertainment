@@ -109,7 +109,7 @@
 }
 
 body {
-    background-color: #191717;
+    background-color: #191717 !important;
     margin: 0;
     padding: 0;
 }
@@ -148,14 +148,14 @@ body {
 </head>
 <body>
      {% include "header.html" with active_page="portfolio" %}
-    <header>
+    
     <div class="banner">
         <img src='{% get_media_prefix %}banners/portfolio-banner.jpg' alt="Banner Image">
         <div class="banner-text">
             <h1>Portfolio</h1>
         </div>
     </div>
-</header>
+</>
 <h1 style="color:white; text-align:center; padding-top:50px;">MOVIES DISTRIBUTION FOR GERMANY</h1>
 <div class="potfolio-section">  
 
