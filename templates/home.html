@@ -56,19 +56,6 @@
 				font-size: 16px;
 				border: none;
 				cursor: pointer;
-				border-radius: 10px;
-			}
-
-			.button:hover{
-				display: inline-block;
-				padding: 10px 20px;
-				background-color: orange;
-				color: white;
-				text-decoration: none;
-				font-size: 16px;
-				border: none;
-				cursor: pointer;
-				border-radius: 10px;
 			}
 
 			.prev,
@@ -87,19 +74,15 @@
 			}
 
             .latest-movie-cont{
-				margin-top: 50px;
                 padding:20px;
-				margin-bottom: 50px;
             }
 
             .latest-movie-cont h2{
                 color:white;
-                padding:15px 25px;
+                padding:20px;
                 background:orange;
                 width:max-content;
-				border-radius:40px;
-				margin-left:30px;
-				font-size:40px;
+                border-radius:20px;
             }
 			.prev {
 				left: 10px;
@@ -116,11 +99,7 @@
 				padding: 0;
                 background-color: #191717 !important;
 			}
-		.overlay h2{
-						padding:0px;
-						margin:5px;
-						text-align:center !important;
-					}
+
 			
 
 			.lt-mv-item {
@@ -154,6 +133,7 @@
 				font-size: 18px;
 				background: #fff;
 			}
+
 
 			.lt-mv-item {
 				height: 420px !important;
@@ -235,11 +215,8 @@
 			@media(max-width: 768px) {
 				.movies-container {
 					display: block;
-					overflow-x: hidden;
+					overflow-x: auto;
 					overflow-y: hidden;
-					position:relative;
-					left:50%;
-					transform:translateX(-45%) !important;
 				}
 				.modal-content {
 				background-color: #fefefe;
@@ -293,6 +270,9 @@ font-size:20px;
 				width:calc(100vw - 50px)
 			}
 			
+			.swiper-wrapper{
+				width:100% !important;
+			}
 			}
 		</style>
 	</head>
@@ -372,7 +352,7 @@ font-size:20px;
                 </div>
             </div>
     	</div>
-<div id="myModal" class="modal">
+		<div id="myModal" class="modal">
 			<div class="modal-content">
 				<span class="close" onclick="closeModal()">&times;</span>
 				<iframe
