@@ -20,6 +20,7 @@
 				width: 300px !important;
 			}
 
+
 			.movies-cont {
 				display: grid;
                 grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -50,6 +51,8 @@
 			.overlay h2 {
 				margin-top: 20px;
 				text-align: center;
+                color: #ff9900;
+
 			}
 
 			.overlay p {
@@ -77,8 +80,8 @@
 				z-index: 9999;
 				left: 0;
 				top: 0;
-				width: 80%;
-				height: 80%;
+				width: 60vw;
+				height: 80vh;
 				overflow: auto;
 				background-color: rgba(0, 0, 0, 0.7);
 			}
@@ -88,8 +91,16 @@
 				margin: 10% auto;
 				padding: 20px;
 				border: 1px solid #888;
-				width: 80%;
+				width: 60vw !important;
+                height: 70%  !important;
 			}
+
+            .modal-content iframe{
+                width: calc(60vw - 40px) !important;
+                height: 100%  !important;
+            }
+
+
 
 			.close {
 				color: #aaa;
@@ -135,6 +146,19 @@
 				display: grid;
                 grid-template-columns: 1fr;
 			}
+            .modal-content {
+				background-color: #fefefe;
+				margin: 10% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 90vw !important;
+                height: 40%  !important;
+			}
+
+            .modal-content iframe{
+                width: calc(90vw - 40px) !important;
+                height: 100%  !important;
+            }
             }
 		</style>
 	</head>
@@ -156,7 +180,7 @@
 					class="movie-item"
 					style="
 					background-image: url('{{movie.image.url}}');
-                    background-size:contain;
+                    background-size:cover;
                     background-repeat:no-repeat;
 				">
 					<div class="overlay">
@@ -168,60 +192,13 @@
 							onclick="openModal('{{ movie.trailer_link }}')"
 							>Watch Now</a
 						>
-						<a href="#" class="button">Book Now</a>
+						<a href="{% url 'movie_synopsis' movie.id %}" class="button">Book Now</a>
 					</div>
 				</div>
 
 				{% endfor %}
 
 
-                {% for movie in movies%}
-				<div
-					class="movie-item"
-					style="
-					background-image: url('{{movie.image.url}}');
-                    background-size:contain;
-                    background-repeat:no-repeat;
-				">
-					<div class="overlay">
-						<h2>{{ movie.title }}</h2>
-						<p>{{ movie.description }}</p>
-						<a
-							href="#"
-							class="button"
-							onclick="openModal('{{ movie.trailer_link }}')"
-							>Watch Now</a
-						>
-						<a href="#" class="button">Book Now</a>
-					</div>
-				</div>
-
-				{% endfor %}
-
-
-
-                {% for movie in movies%}
-				<div
-					class="movie-item"
-					style="
-					background-image: url('{{movie.image.url}}');
-                    background-size:contain;
-                    background-repeat:no-repeat;
-				">
-					<div class="overlay">
-						<h2>{{ movie.title }}</h2>
-						<p>{{ movie.description }}</p>
-						<a
-							href="#"
-							class="button"
-							onclick="openModal('{{ movie.trailer_link }}')"
-							>Watch Now</a
-						>
-						<a href="#" class="button">Book Now</a>
-					</div>
-				</div>
-
-				{% endfor %}
 			</div>
 		</div>
 		<div id="myModal" class="modal">
@@ -229,8 +206,7 @@
 				<span class="close" onclick="closeModal()">&times;</span>
 				<iframe
 					id="videoPlayer"
-					width="100%"
-					height="450"
+					
 					src=""
 					frameborder="0"
 					allowfullscreen></iframe>

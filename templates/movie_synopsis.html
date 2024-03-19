@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -6,14 +6,18 @@
 		<title>Movie Synopsis</title>
 		<link
 			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link
+			rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 		<style>
 			body {
-				background-color: #000;
+				background-color: #191717 !important;
 				color: #fff;
 			}
 			.container {
 				padding: 50px;
+				color: white !important;
 			}
 			.movie-image img {
 				max-width: 100%;
@@ -23,18 +27,21 @@
 			.movie-details {
 				display: flex;
 				align-items: center;
+				
 			}
 			.movie-info {
-				text-align: center;
+				display:flex;
+				flex-direction: row;
+				align-items: center;
+				gap:10px;
 			}
 			.movie-info p {
 				margin: 0;
 				text-align: left;
 			}
 			.movie-info .icon {
-				font-size: 24px;
-				margin-bottom: 5px;
-				text-align: left;
+				font-size: 20px;
+				text-align: right !important;
 			}
 			.button {
 				display: inline-block;
@@ -50,19 +57,7 @@
 				justify-content: space-between;
 				margin: 20px 0;
 			}
-			.theatre-column {
-				width: 18%;
-				text-align: center;
-				background-color: #f8f9fa;
-				padding: 20px;
-				border-radius: 10px;
-				color: black;
-			}
-			.theatre-column img {
-				max-width: 100%;
-				height: auto;
-				border-radius: 5px;
-			}
+			
 			.book-now-button {
 				display: inline-block;
 				padding: 10px 20px;
@@ -77,25 +72,172 @@
 			.theatre {
 				color: black;
 			}
-			.popup {
-				width: 800px;
-				height: 600px;
+
+			.modal {
+				display: none;
 				position: fixed;
+				z-index: 9999;
+				left: 0;
+				top: 0;
+				width: 60vw;
+				height: 80vh;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.7);
+			}
+
+			.modal-content {
+				background-color: #fefefe;
+				margin: 10% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 60vw !important;
+                height: 70%  !important;
+			}
+
+            .modal-content iframe{
+                width: calc(60vw - 40px) !important;
+                height: 100%  !important;
+            }
+
+
+
+
+			.close {
+				color: #aaa;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+
+			.close:hover,
+			.close:focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.banner {
+				position: relative;
+				margin-bottom: 50px;
+				padding: 0px;
+				margin: 0px 0px 50px 0px;
+			}
+			.banner img {
+				width: 100%;
+				height: auto;
+				padding: 0px;
+				margin: 0px;
+			}
+			.banner-text {
+				position: absolute;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
-				background-color: white;
-				border: 2px solid black;
-				z-index: 1000;
-				display: none;
-			}
-			.popup iframe {
+				text-align: center;
+				color: white;
 				width: 100%;
-				height: 100%;
 			}
+			.banner-text h1 {
+				margin: 0;
+				font-size: 36px;
+			}
+
+            @media(max-width:768px) {
+                .movies-cont {
+				display: grid;
+                grid-template-columns: 1fr;
+			}
+            .modal-content {
+				background-color: #fefefe;
+				margin: 10% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 90vw !important;
+                height: 40%  !important;
+			}
+
+            .modal-content iframe{
+                width: calc(90vw - 40px) !important;
+                height: 100%  !important;
+            }
+            }
+
+			
+			.theaters-list{
+				margin:50px;
+				display: flex;
+				gap: 20px;
+			}
+
+			.filter-dropdown select{
+				width:150px;
+				height:40px;
+				border-radius:5px;
+			}
+
+			.filter-dropdown button{
+				display: inline-block;
+				padding: 5px 15px;
+				height:45px !important;
+				background-color: #f68d2e;
+				color: #fff;
+				text-decoration: none;
+				border-radius: 10px;
+				margin-top: 20px;
+			}
+
+			.theatre-column {
+				width: 300px;
+				text-align: left;
+				background-color: #f8f9fa;
+				padding: 20px;
+				border-radius: 10px;
+				color: black;
+			}
+			.theatre-column img {
+				width: 100%;
+				height: 100px;
+				border-radius: 5px;
+				margin-bottom:10px;
+			}
+
+			.theatre-column a{
+				display:flex;
+				justify-content:left;
+				align-items:left;
+				border: 1px solid #df6d25;
+				margin:5px;
+				padding: 5px;
+				border-radius: 10px;
+				color: #df6d25;
+				list-style:none;
+				text-align:left;
+			}
+
+
+
+			.theatre-column a:hover{
+				background-color:#df6d25;
+				color:white;
+			}
+
+			@media (max-width: 768px){
+				.movie-details{
+					flex-direction: column;
+					align-items:start;
+					gap:15px;
+				}
+				.theaters-list{
+				margin:10px;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+			}
+			
 		</style>
 	</head>
 	<body>
+		{% include "header.html" with active_page="" %}
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
@@ -104,17 +246,17 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-					<h1 class="text-left mb-5">{{ movie.title }}</h1>
+					<h1 class="text-left">{{ movie.title }}</h1>
 					<div class="movie-details">
-						<div class="col-md-4 movie-info">
+						<div class="movie-info">
 							<i class="fas fa-film icon"></i>
 							<p class="movie-info">{{ movie.genere }}</p>
 						</div>
-						<div class="col-md-4 movie-info">
+						<div class="movie-info">
 							<i class="fas fa-clock icon"></i>
 							<p>{{ movie.runtime }} Hrs</p>
 						</div>
-						<div class="col-md-4 movie-info">
+						<div class="movie-info">
 							<i class="far fa-calendar-alt icon"></i>
 							<p>{{ movie.release_date }}</p>
 						</div>
@@ -129,40 +271,37 @@
 						<p><strong>Director:</strong> {{ movie.director }}</p>
 					</div>
 					<div class="text-left mt-4">
-						<h4>Language:</h4>
-						<p>{{ movie.language }}</p>
+						<h4>Language: </h4>
+						<p><strong>Audio Language:</strong> {{ movie.language }}</p>
+						<p><strong>Subtitle Language:</strong> {{ movie.subtitle_language }}</p>
 					</div>
 					<div class="text-left mt-4">
-						<div class="popup" id="popup">
-							<iframe
-								width="560"
-								height="315"
-								src="http://www.youtube.com/embed/{{movie.trailer_link}}.split("
-								?v=")[1]"
-								title="YouTube video player"
-								frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								allowfullscreen></iframe>
-						</div>
-						<button id="openPopup">Watch Trailer</button>
+						<a
+							href="#"
+							class="button"
+							onclick="openModal('{{ movie.trailer_link }}')"
+							>Watch Now</a
+						>
 
-						<div id="videoPopup" class="popup">
-							<span class="close" id="closePopup">&times;</span>
-							<iframe
-								class="popup-video"
-								src="{{ movie.trailer_link }}"
-								frameborder="0"
-								allowfullscreen></iframe>
-						</div>
 						<a href="#" class="button">Buy Now</a>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal()">&times;</span>
+				<iframe
+					id="videoPlayer"
+					src=""
+					frameborder="0"
+					allowfullscreen></iframe>
+			</div>
+		</div>
 		<div class="container">
 			<div class="filter-dropdown">
 				<form method="GET" action="{% url 'movie_synopsis' movie.id %}">
-					<label for="location-filter">Filter by Location:</label>
+					<label for="location-filter">Filter by Location:</label><br>
 					<select id="location-filter" name="location">
 						<option value="">All Locations</option>
 						{% for location in locations %}
@@ -173,18 +312,20 @@
 				</form>
 			</div>
 
-			<div class="theatre-container">
+			<div class="theaters-list">
 				{% for theater in theaters %}
 				<div class="theatre-column">
+					<img src="{{ theater.image.url }}" alt="theater image" />
 					<h4>{{ theater.name }}</h4>
 					<p>Location: {{ theater.location }}</p>
 					<h5>Showtimes:</h5>
-					<ul>
+					<div class="showtimes">
+					<center><ul>
 						{% for showtime in theater.showtimes.all %}
-						<li>{{ showtime.time }}</li>
+						<a href="{{showtime.booking_link}}"><li>{{ showtime.time }}</li></a>
 						{% endfor %}
-					</ul>
-					<a href="#" class="book-now-button">Book Now</a>
+					</ul></center>
+				</div>
 				</div>
 				{% endfor %}
 			</div>
@@ -192,14 +333,22 @@
 
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 		<script>
-			document
-				.getElementById("watchTrailer")
-				.addEventListener("click", function (event) {
-					event.preventDefault();
+			function openModal(videoUrl) {
+				var modal = document.getElementById("myModal");
+				var videoPlayer = document.getElementById("videoPlayer");
 
-					var popup = document.getElementById("popup");
-					popup.style.display = "block";
-				});
+				videoPlayer.src = videoUrl;
+
+				modal.style.display = "block";
+			}
+
+			function closeModal() {
+				var modal = document.getElementById("myModal");
+				var videoPlayer = document.getElementById("videoPlayer");
+
+				videoPlayer.src = "";
+				modal.style.display = "none";
+			}
 		</script>
 	</body>
 </html>

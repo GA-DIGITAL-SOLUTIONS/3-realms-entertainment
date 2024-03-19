@@ -166,18 +166,17 @@
 			}
 
 			.box {
-				flex: 0 0 auto;
-				scroll-snap-align: start;
-				width: 300px !important;
-				height: 400px !important;
-				margin-right: 20px;
+				width: 240px !important;
+				height: 350px !important;
+				display:flex;
+				align-items:center;
+				justify-content: center;
 			}
 
             .box img {
-				width: 300px;
-				height: 400px;
-                object-fit: contain;
-				transition: transform 0.3s ease;
+				width: 240px;
+				height: 350px;
+                object-fit: cover;
 			}
 
 			.movie-item {
@@ -204,17 +203,41 @@
 			@media screen and (max-width: 768px) {
 				.movies-container {
 					display: block;
-					white-space: nowrap;
 					overflow-x: auto;
 					overflow-y: hidden;
 				}
 
 				.box {
-					display: inline-block;
-					width: 80%; /* Adjust width for mobile layout */
-					margin-right: 10px; /* Adjust spacing */
+					display:block;
+					width: 100%
+					margin-right: 10px;
 					vertical-align: top;
 				}
+
+				.section-head{
+					font-size:20px;
+					border-radius:10px !important;
+					padding:10px !important;
+					position:relative;
+					left:50%;
+					transform:translateX(-50%);
+				}
+				.slideshow-container{
+					height:300px;
+				}
+				.slide {
+				display: none;
+				text-align: center;
+				position: relative;
+				height: 250px;
+				background-size: cover;
+				background-position: center;
+			}
+
+			.content {
+				width:calc(100vw - 50px)
+			}
+			
 			}
 		</style>
 	</head>
@@ -222,38 +245,38 @@
 		{% include "header.html" with active_page="home" %}
 		<div class="slideshow-container">
 			<div
-				class="slide"
+				class="slide slide1"
 				style="
 					background-image: url('{% get_media_prefix %}banners/banner1.jpg');
 				">
 				<div class="content">
-					<h2>Slide 1 Content</h2>
-					<p>This is the content of slide 1.</p>
-					<a href="page1.html" class="button">Learn More</a>
+					<h2>Experience the Magic of Indian Cinema</h2>
+					<p>Bringing India's Finest Films to Europe!</p>
+					<a href="{% url 'about' %}"class="button">Learn More</a>
 				</div>
 			</div>
 
 			<div
-				class="slide"
+				class="slide slide2"
 				style="
 					background-image: url('{% get_media_prefix %}banners/banner2.jpg');
 				">
 				<div class="content">
-					<h2>Slide 2 Content</h2>
-					<p>This is the content of slide 2.</p>
-					<a href="page2.html" class="button">Discover More</a>
+					<h2>Your Gateway to Indian Cinema</h2>
+					<p>Personalized Distribution, Global Impact.</p>
+					<a href="{% url 'about' %}"class="button">Discover More</a>
 				</div>
 			</div>
 
 			<div
-				class="slide"
+				class="slide slide3"
 				style="
 					background-image: url('{% get_media_prefix %}banners/banner3.jpg');
 				">
 				<div class="content">
-					<h2>Slide 3 Content</h2>
-					<p>This is the content of slide 3.</p>
-					<a href="page3.html" class="button">Explore More</a>
+					<h2>Unlock the Power of Storytelling</h2>
+					<p>Transforming Lives, One Film at a Time.</p>
+					 <a href="{% url 'about' %}"class="button">Explore More</a>
 				</div>
 			</div>
 
@@ -262,13 +285,13 @@
 		</div>
         
         <div class="latest-movie-cont">
-            <h2>Latest Movies</h2>
+            <h2 class="section-head">Latest Movies</h2>
             <div class="movies-container swiper-container">
                 
                 <div class="swiper-wrapper">
 
                     {% for movie in movies %}
-                    <div class="swiper-slide box">
+                    <div class="swiper-slide  box">
                         <img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
                         <div class="overlay">
                             <h3>{{ movie.title }}</h3>
@@ -286,21 +309,21 @@
 
         <div class="counter">{% include "counter.html" %}</div>
         <div class="latest-movie-cont">
-            <h2>Upcoming Movies</h2>
+            <h2 class="section-head">Upcoming Movies</h2>
             <div class="movies-container swiper-container">
                 
                 <div class="swiper-wrapper">
 					{% for movie in upmovies %}
-						
 							<div class="swiper-slide movie-item">
 								<center><h2>{{movie.title}}</h2></center>
 								<img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
 								<p>{{ movie.releasedate|default:'-' }}</p>
 							</div>
-						
 					{% endfor %}
-                    
+
+					
                 </div>
+
             </div>
     	</div>
     	<div class="footer">{% include "footer.html" %}</div>
@@ -333,7 +356,8 @@
 				slides[slideIndex - 1].style.display = "block";
 			}
 
-			var swiper = new Swiper(".swiper-container", {
+			if (window.outerWidth >= 768) {
+				var swiper = new Swiper(".swiper-container", {
 				slidesPerView: 4,
 				spaceBetween: 20,
 				loop: true,
@@ -342,11 +366,20 @@
 					disableOnInteraction: false,
 				},
 			});
-
-			if (window.innerWidth <= 768) {
-				swiper.params.slidesPerView = 1;
-				swiper.update();
 			}
+			else{
+				var swiper = new Swiper(".swiper-container", {
+				slidesPerView: 1,
+				spaceBetween: 20,
+				loop: true,
+				autoplay: {
+					delay: 1500,
+					disableOnInteraction: false,
+				},
+			});
+			}
+
+
 		</script>
 	</body>
 </html>

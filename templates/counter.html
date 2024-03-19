@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sliding Banners</title>
 <style>
 
 .section-counter {
@@ -35,6 +34,8 @@
     padding: 20px;
     text-align: center;
     margin-bottom: 20px;
+    width: 350px;
+    height:120px;
 }
 
 .section-counter .counter h3 {
@@ -44,6 +45,9 @@
 .section-counter .counter-item {
     width: 100%;
     float: left;
+    color: #df6d25;
+    font-weight: 700;
+    font-size:24px;
 }
 
 .section-counter .counter-item div {
@@ -55,6 +59,21 @@
     text-align:center;
 }
 
+@media(max-width:786px){
+    .left-column .counter{
+        width:150px;
+        height:100px;
+    }
+    .left-column .counter h3{
+        font-size: 20px;
+    }
+
+    .left-column .counter-item{
+        font-size:18px;
+        color: #df6d25;
+        font-weight:700;
+    }
+}
 </style>
 </head>
 <body>
@@ -62,27 +81,26 @@
     <div class="container">
         <div class="left-column">
             <div class="counter">
-                <h3>Counter 1</h3>
-                <div class="counter-item" id="counter1">0</div>
+                <h3>Movies Released</h3>
+                <div class="counter-item" id="counter1">25+</div>
             </div>
             <div class="counter">
-                <h3>Counter 2</h3>
-                <div class="counter-item" id="counter2">0</div>
+                <h3>Theaters</h3>
+                <div class="counter-item" id="counter2">10+</div>
             </div>
             <div class="counter">
-                <h3>Counter 3</h3>
-                <div class="counter-item" id="counter3">0</div>
+                <h3>Cities</h3>
+                <div class="counter-item" id="counter3">20+</div>
             </div>
         </div>
     </div>
 </section>
 
 <script>
-    // JavaScript for counters
     function startCounters() {
-        startCounter(100, 'counter1'); // Start Counter 1 from 100
-        startCounter(200, 'counter2'); // Start Counter 2 from 200
-        startCounter(300, 'counter3'); // Start Counter 3 from 300
+        startCounter(25, 'counter1'); // Start Counter 1 from 100
+        startCounter(10, 'counter2'); // Start Counter 2 from 200
+        startCounter(20, 'counter3'); // Start Counter 3 from 300
     }
 
     function startCounter(startValue, elementId) {

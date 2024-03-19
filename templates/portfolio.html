@@ -58,48 +58,23 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top:20px;
 }
 
-
+.movie{
+    height:400px !important;
+    width:350px !important;
+}
 .movie img {
-    width: 350px; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
-    transition: opacity 0.3s ease;
+    width: 350px;
+    height: 400px;
+    object-fit:cover;
 }
 
 .movie img:hover {
-    opacity: 0.7; /* Hover opacity */
+    opacity: 0.7; 
 }
 
-/* Style for movie titles */
-.movie img {
-    position: relative;
-}
-
-.movie img::after {
-    content: attr(data-title);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 5px;
-    background-color: rgba(255, 0, 0, 0.7); /* Red color with opacity */
-    color: white; /* Text color */
-    font-size: 16px; /* Adjust font size as needed */
-    text-align: center;
-    text-transform: capitalize; /* Convert to title case */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.movie img:hover::after {
-    opacity: 1;
-}
-
-.title {
-    color: Red;
-    Background-color: white;
-}
 
 .potfolio-section {
     padding: 50px;
@@ -137,11 +112,25 @@ body {
 }
 }
 
+.title{
+    background:#191717;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+
 /* For screens up to 480px wide (phones) */
 @media (max-width: 480px) {
     .banner-text h1 {
         font-size: 20px;
     }
+
+    .title{
+        font-size: 20px;
+        background:#191717;
+        padding: 15px;
+    }
+
 }
 </style>
 </head>
@@ -155,7 +144,7 @@ body {
         </div>
     </div>
 </>
-<h1 style="color:white; text-align:center; padding-top:50px;">MOVIES DISTRIBUTION FOR GERMANY</h1>
+<h1 class="title">MOVIES DISTRIBUTION FOR GERMANY</h1>
 <div class="potfolio-section">  
 
 <!-- Tabs for filtering -->
@@ -186,7 +175,7 @@ body {
             if (language === 'all') {
                 movie.style.display = 'block';
             } else {
-                if (movie.classList.contains(language)) {
+                if (movie.language.contains(language)) {
                     movie.style.display = 'block';
                 } else {
                     movie.style.display = 'none';
