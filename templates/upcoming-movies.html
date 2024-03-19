@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Blog movies</title>
+		<style>
+			body {
+				background-color: #191717 !important;
+			}
+
+            .up-container{
+                display: inline-block;
+            }
+			.up-container .banner {
+				position: relative;
+				margin-bottom: 50px;
+				padding: 0px;
+				margin: 0px 0px 50px 0px;
+			}
+			.up-container .banner img {
+				width: 100%;
+				height: auto;
+				padding: 0px;
+				margin: 0px;
+			}
+			.up-container .banner-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				color: white;
+				width: 100%;
+			}
+			.up-container .banner-text h1 {
+				margin: 0;
+				font-size: 36px;
+			}
+			
+			.up-container .movie {
+				border: 1px solid #ccc;
+				padding: 30px 10px;
+				margin-bottom: 20px;
+				background-color: #fff;
+			}
+			.up-container .movie img {
+				width: 100%;
+				height: auto;
+			}
+			.up-container .movie h2 {
+				margin-top: 0;
+				text-align: center;
+			}
+			.up-container .movie p {
+				margin-bottom: 0;
+				text-align: center;
+			}
+
+			.up-container .movies-list {
+				margin: 25px;
+				width: calc(100vw - 50px) !important;
+				display:grid;
+                grid-template-columns:1fr 1fr 1fr 1fr;
+                gap:20px;
+			}
+			.up-container .button {
+				background: linear-gradient(to right, orange, yellow);
+				border: none;
+				color: white;
+				padding: 15px 30px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 20px;
+				border-radius: 20px;
+				cursor: pointer;
+			}
+
+            @media(max-width:768px){
+                .up-container .movies-list {
+                   
+                    grid-template-columns:1fr;
+                }
+            }
+
+		</style>
+	</head>
+	<body>
+		{% include "header.html" with active_page="upcoming" %}
+		<div class="up-container">
+			<div class="banner">
+				<img
+					src="{% get_media_prefix %}banners/upcoming-movie-banner.jpg"
+					alt="Banner Image" />
+				<div class="banner-text">
+					<h1>Upcoming Movies</h1>
+				</div>
+			</div>
+
+			<div class="movies-list">
+				{% for movie in upmovies %}
+				<div class="movie">
+					
+						<h2>{{movie.title}}</h2>
+						<img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
+						<p>{{ movie.releasedate|default:'-' }}</p>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="footer">{% include "footer.html" %}</div>
+	</body>
+</html>

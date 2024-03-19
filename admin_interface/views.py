@@ -1,10 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
 
 def movie_list(request):
     upmovies = UpcomingMovie.objects.all()
     movies = Movie.objects.all()
     return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies})
+
+def latest_movies(request):
+    movies = Movie.objects.all()
+    return render(request, 'latest-movies.html', {'movies': movies})
 
 def movie_synopsis(request, movie_id):
     try:
@@ -38,4 +45,33 @@ def portfolio(request):
 def about(request):
     return render(request, 'about.html')
 
+
+def about(request):
+    return render(request, 'about.html')
+
+def up_movies(request):
+    upmovies = UpcomingMovie.objects.all()
+    return render(request, 'upcoming-movies.html', {'upmovies': upmovies})
+
+
+def sendmail(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        message = request.POST.get('message', '')
+
+        notification = f'Name: {name}\nEmail: {email}\nContact: {phone}\nMessage: {message}'
+
+        send_mail(
+            'New Enquiry',
+            notification,
+            '',  
+            ['hemachandra521@gmail.com'],  
+            fail_silently=False,
+        )
+
+        return HttpResponse('Email sent successfully')  
+    else:
+        return HttpResponse('Invalid method')  
 

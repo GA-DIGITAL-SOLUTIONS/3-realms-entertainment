@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .nav-link{
-            font-size:20px;
+            font-size:18px;
+            margin-right:20px;
         }
         .bg-dark{
             background-color:transparent !important;
@@ -42,8 +43,11 @@
                     <li class="nav-item {% if active_page == 'portfolio' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
                     </li>
-                     <li class="nav-item {% if active_page == 'lates_movies' %}active{% endif %}">
-                        <a class="nav-link" href="#">Latest Movies</a>
+                     <li class="nav-item {% if active_page == 'latest' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'latest_movies' %}">Latest Movies</a>
+                    </li>
+                     <li class="nav-item {% if active_page == 'upcoming' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'up-movies' %}">Upcoming Movies</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-2">
@@ -56,6 +60,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
                     </li>
+                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

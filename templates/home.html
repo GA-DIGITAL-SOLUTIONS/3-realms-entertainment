@@ -179,6 +179,28 @@
                 object-fit: contain;
 				transition: transform 0.3s ease;
 			}
+
+			.movie-item {
+				border: 1px solid #ccc;
+				padding: 30px 10px;
+				margin-bottom: 20px;
+				background-color: #fff;
+			}
+			.movie-item img {
+				width: 100%;
+				height: auto;
+			}
+			.movie-item h2 {
+				margin-top: 0;
+				text-align: center !important;
+				color:black !important;
+				background: None;
+			}
+			.movie-item p {
+				margin-bottom: 0;
+				text-align: center;
+				color:black !important;
+			}
 			@media screen and (max-width: 768px) {
 				.movies-container {
 					display: block;
@@ -260,7 +282,7 @@
                     {% endfor %}
                 </div>
             </div>
-    </div>
+    	</div>
 
         <div class="counter">{% include "counter.html" %}</div>
         <div class="latest-movie-cont">
@@ -268,19 +290,20 @@
             <div class="movies-container swiper-container">
                 
                 <div class="swiper-wrapper">
-
-                    {% for movie in upmovies %}
-                    <div class="swiper-slide box">
-                        <img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
-                        <div class="overlay">
-                            <h3>{{ movie.title }}</h3>
-                        </div>
-                    </div>
-                    {% endfor %}
+					{% for movie in upmovies %}
+						
+							<div class="swiper-slide movie-item">
+								<center><h2>{{movie.title}}</h2></center>
+								<img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
+								<p>{{ movie.releasedate|default:'-' }}</p>
+							</div>
+						
+					{% endfor %}
+                    
                 </div>
             </div>
-    </div>
-    <div class="footer">{% include "footer.html" %}</div>
+    	</div>
+    	<div class="footer">{% include "footer.html" %}</div>
     </div>
 
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

@@ -7,7 +7,6 @@ class CustomAdminSite(AdminSite):
     site_header = '3 Realms Entertainment'
     index_title = '3-Realms'
 
-
 custom_admin_site = CustomAdminSite(name='custom_admin')
 
 class MovieAdmin(admin.ModelAdmin):
