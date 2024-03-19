@@ -171,38 +171,11 @@ body {
 <div class="movies">
   <!-- Movie items -->
   <div class="movie all telugu">
-    <img src="includes/portfolio/Hi Nanna.jpg" alt="Telugu Movie 1" title="Hi Nanna">
-     <img src="includes/portfolio/Hanuman.jpg" alt="Hanuman" data-title="Hanuman" title="Hanuman">
-      <img src="includes/portfolio/Animal.jpg" alt="Animal" data-title="Animal" title="Animal">
-       <img src="includes/portfolio/Bahuballi-2-1.jpg" alt="Bahuballi 2" data-title="Bahuballi 2" title="Bahuballi 2">
-       <img src="includes/portfolio/Adipurush-1.jpg" alt="Adipurush" data-title="Adipurush" title="Adipurush">
-      
-  </div>
-  <div class="movie all tamil">
-  <img src="includes/portfolio/Adipurush-tamil.jpg" alt="Adipurush" data-title="Adipurush" title="Adipurush">
-  <img src="includes/portfolio/Bahuballi2-tamil.jpg" alt="Bahuballi 2" data-title="Bahuballi 2" title="Bahubali 2">
-  <img src="includes/portfolio/Bigil.jpg" alt="Bigil" data-title="Bigil" title="Bigil">
-  <img src="includes/portfolio/Darbar.jpg" alt="Darbar" data-title="Darbar" title="Darbar">
-  <img src="includes/portfolio/Fight Club.jpg" alt="Fight Club" data-title="Fight Club" title="Fight Club">
-      <img src="includes/portfolio/Jailer.jpg" alt="Jailer" data-title="Jailer" title="Jailerr">
-      <img src="includes/portfolio/Kaala.jpg" alt="Kaala" data-title="Kaala" title="Kaala">
-  <img src="includes/portfolio/Kaatru Veliyidai.jpg" alt="Kaatru Veliyidai" data-title="Kaatru Veliyidai" title="Kaatru Veliyidai">
-  <img src="includes/portfolio/RRR.jpg" alt="RRR" data-title="RRR" title="RRR">
-  <img src="includes/portfolio/Saithan.jpg" alt="Saithan" data-title="Saithan" title="Saithan">
-  <img src="includes/portfolio/NGK (Surya).jpg" alt="NGK" data-title="NGK" title="NGK">
-  <img src="includes/portfolio/singam -3.jpg" alt="singam -3" data-title="singam -3" title="singam -3">
-  <img src="includes/portfolio/Sketch.jpg" alt="Sketch" data-title="Sketch" title="Sketch">
-  <img src="includes/portfolio/Theeran Adhigaaram ondru.jpg" alt="Theeran Adhigaaram ondru" data-title="Theeran Adhigaaram ondru" title="Theeran Adhigaaram ondru">
-  <img src="includes/portfolio/Tik Tik Tik.jpg" alt="Tik Tik Tik" data-title="Tik Tik Tik" title="Tik Tik Tik">
-   <img src="includes/portfolio/VIP 2.jpg" alt="VIP 2" data-title="VIP 2" title="VIP 2">
-   <img src="includes/portfolio/Hi Nanna.jpg" alt="Telugu Movie 1" title="Hi Nanna">
-    <img src="includes/portfolio/Animal.jpg" alt="Animal" data-title="Animal" title="Animal">
-     <img src="includes/portfolio/Hanuman.jpg" alt="Hanuman" data-title="Hanuman" title="Hanuman">
-     
-</div>
+    {% for movie in movies%}
+    <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+    {% endfor %}
+    </div>
 
- 
-  <!-- Add more movie items as needed -->
 </div>
 </div>
  <div class="footer">{% include "footer.html" %}</div>

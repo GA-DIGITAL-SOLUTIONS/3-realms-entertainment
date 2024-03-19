@@ -32,7 +32,8 @@ def contact(request):
     return render(request, 'contact.html')
 
 def portfolio(request):
-    return render(request, 'portfolio.html')
+    movies = Movie.objects.all()
+    return render(request, 'portfolio.html',{'movies': movies})
 
 def about(request):
     return render(request, 'about.html')
