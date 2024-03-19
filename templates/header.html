@@ -62,18 +62,20 @@
                      <li class="nav-item {% if active_page == 'about' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'about' %}">About</a>
                     </li>
-                     <li class="nav-item {% if active_page == 'contact' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                    </li>
-                    <li class="nav-item {% if active_page == 'portfolio' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
-                    </li>
                      <li class="nav-item {% if active_page == 'latest' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'latest_movies' %}">Latest Movies</a>
                     </li>
                      <li class="nav-item {% if active_page == 'upcoming' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'up-movies' %}">Upcoming Movies</a>
                     </li>
+                    <li class="nav-item {% if active_page == 'portfolio' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
+                    </li>
+                     <li class="nav-item {% if active_page == 'contact' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    
+                    
                 </ul>
                 
                 <ul class="navbar-nav socials">
