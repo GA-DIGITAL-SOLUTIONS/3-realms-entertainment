@@ -4,7 +4,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     genere = models.CharField(max_length=100)
     description = models.TextField()
-    runtime = models.DecimalField(max_digits=10,decimal_places=2)
+    runtime = models.CharField(max_length = 20)
     actor = models.CharField(max_length = 100)
     actress = models.CharField(max_length = 100)
     director = models.CharField(max_length=100)

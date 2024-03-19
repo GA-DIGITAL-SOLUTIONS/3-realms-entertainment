@@ -50,7 +50,7 @@
 			.button {
 				display: inline-block;
 				padding: 10px 20px;
-				background-color: #4caf50;
+				background-color: #df6d25;
 				color: white;
 				text-decoration: none;
 				font-size: 16px;
@@ -92,7 +92,7 @@
 				right: 10px;
 			}
 
-			/* Box styles */
+			/* lt-mv-item styles */
 			body {
 				font-family: Arial, sans-serif;
 				margin: 0;
@@ -102,48 +102,26 @@
 
 			
 
-			.box {
+			.lt-mv-item {
 				width: 23%;
-				height: 300px;
-				margin-bottom: 20px;
+				height: 400px;
+				width:300px !important;
+				margin-bottom: 20px !important;
 				position: relative;
 				overflow: hidden;
 				cursor: pointer;
 			}
 
-			.box:hover .overlay {
-				opacity: 1;
-				transform: translateY(0);
-			}
-
-			.box .overlay {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: rgba(0, 0, 0, 0.6);
-				color: #fff;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
+			.lt-mv-item .overlay {
 				opacity: 0;
-				transform: translateY(100%);
-				transition: all 0.3s ease;
 			}
 
-			.box .overlay h3,
-			.box .overlay p,
-			.box .overlay a {
-				margin: 0 0 10px 0;
-				text-align: center;
-			}
-
-			
-
-			.box:hover img {
-				transform: scale(1.1);
+			.lt-mv-item .overlay:hover {
+				opacity: 1;
+				padding: 15px;
+				background: rgba(0, 0, 0, 0.9);
+				height: 400px;
+				z-index: 1;
 			}
 
 			.swiper-container {
@@ -152,32 +130,37 @@
 			}
 
 			.swiper-slide {
-				text-align: center;
 				font-size: 18px;
 				background: #fff;
 			}
 
-			.movies-container {
-                width:calc(100% - 40px);
-				display: flex;
-				overflow-x: hidden;
-				-webkit-overflow-scrolling: touch;
-				scroll-behavior: smooth;
+			
+
+			.lt-mv-item {
+				height: 420px !important;
+				width: 330px !important;
+				margin:10px !important;
 			}
 
-			.box {
-				width: 240px !important;
-				height: 350px !important;
-				display:flex;
-				align-items:center;
-				justify-content: center;
+			.lt-mv-item .overlay {
+				height: 420px !important;
+				width: 330px !important;
+			}
+ 			.lt-mv-item .overlay:hover {
+				opacity: 1;
+				padding: 15px;
+				background: rgba(0, 0, 0, 0.9);
+				height: 420px;
+				z-index: 1;
 			}
 
-            .box img {
-				width: 240px;
-				height: 350px;
-                object-fit: cover;
+			.lt-mv-item .overlay h2 {
+				margin-top: 20px;
+				text-align: center;
+                color: #ff9900;
+				background-color:transparent !important;
 			}
+
 
 			.movie-item {
 				border: 1px solid #ccc;
@@ -185,10 +168,38 @@
 				margin-bottom: 20px;
 				background-color: #fff;
 			}
+
 			.movie-item img {
 				width: 100%;
 				height: auto;
 			}
+
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 9999;
+				left: 0;
+				top: 0;
+				width: 60vw;
+				height: 80vh;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.7);
+			}
+
+			.modal-content {
+				background-color: #fefefe;
+				margin: 10% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 60vw !important;
+                height: 70%  !important;
+			}
+
+            .modal-content iframe{
+                width: calc(60vw - 40px) !important;
+                height: 100%  !important;
+            }
+
 			.movie-item h2 {
 				margin-top: 0;
 				text-align: center !important;
@@ -200,18 +211,31 @@
 				text-align: center;
 				color:black !important;
 			}
-			@media screen and (max-width: 768px) {
+			@media(max-width: 768px) {
 				.movies-container {
 					display: block;
-					overflow-x: auto;
+					overflow-x: hidden;
 					overflow-y: hidden;
+					position:relative;
+					left:50%;
+					transform:translateX(-45%) !important;
 				}
+				 .modal-content {
+				background-color: #fefefe;
+				margin: 10% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 90vw !important;
+                height: 40%  !important;
+			}
 
-				.box {
-					display:block;
-					width: 100%
-					margin-right: 10px;
-					vertical-align: top;
+            .modal-content iframe{
+                width: calc(90vw - 40px) !important;
+                height: 100%  !important;
+            }
+
+				.lt-mv-item {
+					width:100vw;
 				}
 
 				.section-head{
@@ -291,22 +315,43 @@
                 <div class="swiper-wrapper">
 
                     {% for movie in movies %}
-                    <div class="swiper-slide  box">
-                        <img src="{{ movie.image.url }}" alt="{{ movie.title }}" />
-                        <div class="overlay">
-                            <h3>{{ movie.title }}</h3>
-                            <p>{{ movie.description }}</p>
-                            <a href="{{ movie.trailer_link }}" class="watch-now">Watch Now</a>
-                            <a href="{% url 'movie_synopsis' movie.id %}" class="book-now"
-                                >Book Now</a
-                            >
-                        </div>
-                    </div>
+                    <div>
+                <div
+				 class="swiper-slide lt-mv-item"
+					style="
+					background-image: url('{{movie.image.url}}');
+                    background-size:cover;
+                    background-repeat:no-repeat;
+				">
+					<div class="overlay">
+						<h2>{{ movie.title }}</h2>
+						<p>{{ movie.description }}</p>
+						<a
+							href="#"
+							class="button"
+							onclick="openModal('{{ movie.trailer_link }}')"
+							>Watch Now</a
+						>
+						
+						<a href="{% url 'movie_synopsis' movie.id %}" class="button">Book Now</a>
+					</div>
+				</div>
+			</div>
                     {% endfor %}
                 </div>
             </div>
     	</div>
-
+<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal()">&times;</span>
+				<iframe
+					id="videoPlayer"
+					
+					src=""
+					frameborder="0"
+					allowfullscreen></iframe>
+			</div>
+		</div>
         <div class="counter">{% include "counter.html" %}</div>
         <div class="latest-movie-cont">
             <h2 class="section-head">Upcoming Movies</h2>
@@ -326,6 +371,7 @@
 
             </div>
     	</div>
+		
     	<div class="footer">{% include "footer.html" %}</div>
     </div>
 
@@ -378,7 +424,19 @@
 				},
 			});
 			}
+function openModal(videoUrl) {
+				var modal = document.getElementById("myModal");
+				var videoPlayer = document.getElementById("videoPlayer");
+				videoPlayer.src = videoUrl;
+				modal.style.display = "block";
+			}
 
+			function closeModal() {
+				var modal = document.getElementById("myModal");
+				var videoPlayer = document.getElementById("videoPlayer");
+				videoPlayer.src = "";
+				modal.style.display = "none";
+			}
 
 		</script>
 	</body>

@@ -33,7 +33,7 @@ a<!DOCTYPE html>
 				display:flex;
 				flex-direction: row;
 				align-items: center;
-				gap:10px;
+				gap:5px;
 			}
 			.movie-info p {
 				margin: 0;
@@ -42,7 +42,10 @@ a<!DOCTYPE html>
 			.movie-info .icon {
 				font-size: 20px;
 				text-align: right !important;
+				color: #df8925;
+				margin:10px;
 			}
+
 			.button {
 				display: inline-block;
 				padding: 10px 20px;
@@ -98,6 +101,8 @@ a<!DOCTYPE html>
                 width: calc(60vw - 40px) !important;
                 height: 100%  !important;
             }
+			
+
 
 
 
@@ -140,6 +145,12 @@ a<!DOCTYPE html>
 				margin: 0;
 				font-size: 36px;
 			}
+
+			.cast {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-top: 1px dotted orange;
+}
 
             @media(max-width:768px) {
                 .movies-cont {
@@ -264,11 +275,11 @@ a<!DOCTYPE html>
 					<div class="text-left mt-4">
 						<p>{{ movie.description }}</p>
 					</div>
-					<div class="text-left mt-4">
-						<h4>Cast:</h4>
-						<p><strong>Actor:</strong> {{ movie.actor }}</p>
-						<p><strong>Actress:</strong> {{ movie.actress }}</p>
-						<p><strong>Director:</strong> {{ movie.director }}</p>
+					<div class="cast text-left mt-4">
+						<h4 class="cast">Cast:</h4>
+						<p class="cast"><strong>Actor:</strong> {{ movie.actor }}</p>
+						<p class="cast"><strong>Actress:</strong> {{ movie.actress }}</p>
+						<p class="cast"><strong>Director:</strong> {{ movie.director }}</p>
 					</div>
 					<div class="text-left mt-4">
 						<h4>Language: </h4>
