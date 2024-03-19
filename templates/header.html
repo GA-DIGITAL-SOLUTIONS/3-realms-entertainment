@@ -37,6 +37,13 @@
                 border: 2px solid #df6d25 !important;
             }
         }
+
+        #google_translate_element{
+            position:absolute;
+            top:0px;
+            right:10px;
+
+        }
     </style>
 </head>
 	
@@ -67,9 +74,6 @@
                      <li class="nav-item {% if active_page == 'upcoming' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'up-movies' %}">Upcoming Movies</a>
                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link"> <div id="google_translate_element"></div></a>
-                    </li>
                 </ul>
                 
                 <ul class="navbar-nav socials">
@@ -91,6 +95,8 @@
                 </form>
             </div>
         </nav>
+        <div id="google_translate_element"></div>
+
    
     
 <script>
