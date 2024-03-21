@@ -16,6 +16,19 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        try:
+            this = Movie.objects.get(id=self.id)
+            if this.image != self.image:
+                this.image.delete(save=False)
+        except:
+            pass
+        super(Movie, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=False)
+        super(Movie, self).delete(*args, **kwargs)
 
 class Theater(models.Model):
     name = models.CharField(max_length=100)
@@ -43,3 +56,45 @@ class UpcomingMovie(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        try:
+            this = UpcomingMovie.objects.get(id=self.id)
+            if this.image != self.image:
+                this.image.delete(save=False)
+        except:
+            pass
+        super(UpcomingMovie, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=False)
+        super(UpcomingMovie, self).delete(*args, **kwargs)
+
+class Portfolio(models.Model):
+    LANGUAGE_CHOICES = {
+        'ENGLISH': 'ENGLISH',
+        'TELUGU': 'TELUGU',
+        'TAMIL': 'TAMIL',
+        'HINDI': 'HINDI',
+    }
+
+    title = models.CharField(max_length=100)
+    language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES)
+    image = models.ImageField(upload_to='portfolio_images/')
+
+    def __str__(self):
+        return self.title
+    
+    def save(self, *args, **kwargs):
+        try:
+            this = Portfolio.objects.get(id=self.id)
+            if this.image != self.image:
+                this.image.delete(save=False)
+        except:
+            pass
+        super(Portfolio, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=False)
+        super(Portfolio, self).delete(*args, **kwargs)
+        

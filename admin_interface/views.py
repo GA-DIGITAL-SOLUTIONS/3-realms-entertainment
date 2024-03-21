@@ -5,8 +5,8 @@ from django.http import HttpResponse
 
 
 def movie_list(request):
-    upmovies = UpcomingMovie.objects.all()
-    movies = Movie.objects.all()
+    upmovies = UpcomingMovie.objects.filter().order_by('-release_date')[:4]
+    movies = Movie.objects.filter().order_by('-release_date')[:4]
     return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies})
 
 def latest_movies(request):
@@ -39,8 +39,10 @@ def contact(request):
     return render(request, 'contact.html')
 
 def portfolio(request):
-    movies = Movie.objects.all()
-    return render(request, 'portfolio.html',{'movies': movies})
+    all_movies = Portfolio.objects.all()
+    telugu_movies = Portfolio.objects.filter(language = 'TELUGU')
+    tamil_movies = Portfolio.objects.filter(language = 'TAMIL')
+    return render(request, 'portfolio.html',{'all_movies':all_movies,'telugu_movies': telugu_movies,'tamil_movies': tamil_movies})
 
 def about(request):
     return render(request, 'about.html')

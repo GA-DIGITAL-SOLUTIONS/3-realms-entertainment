@@ -10,8 +10,13 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 		<title>3 Realms-Contact</title>
 		<link rel="shortcut icon" type="image/png" href="{% get_media_prefix %}favicon.png" >
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 		<style>
-			
+			*{
+				font-family: 'Quicksand';
+			}
 			.banner {
 				position: relative;
 				margin-bottom: 50px;
@@ -19,8 +24,8 @@
 				margin: 0px;
 			}
 			.banner img {
-				width: 100%;
-				height: auto;
+				width: calc(100vw - 20px);
+				height: 400px;
 				padding: 0px;
 				margin: 0px;
 			}
@@ -198,7 +203,7 @@
 			<div class="contact-container">
 				<div class="icon-box-container">
 					<div class="icon-box">
-						<i class="fa fa-map-marker"></i>
+						<i class="fa fa-map-marker-alt"></i>
 						<h3>Address</h3>
 						<p>Wisthoffweg Essen 45139, Germany</p>
 					</div>

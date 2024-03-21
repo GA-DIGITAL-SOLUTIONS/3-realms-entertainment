@@ -5,10 +5,17 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Blog movies</title>
+		<title>Upcoming movies</title>
+		<link rel="shortcut icon" type="image/png" href="{% get_media_prefix %}favicon.png" >
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 		<style>
 			body {
 				background-color: #191717 !important;
+			}
+			*{
+				font-family: 'Quicksand';
 			}
 
             .up-container{
@@ -22,7 +29,7 @@
 			}
 			.up-container .banner img {
 				width: 100%;
-				height: auto;
+				height: 400px;
 				padding: 0px;
 				margin: 0px;
 			}
@@ -44,7 +51,8 @@
 				border: 1px solid #ccc;
 				padding: 30px 10px;
 				margin-bottom: 20px;
-				background-color: #fff;
+				background-color: transparent;
+				border:none;
 			}
 			.up-container .movie img {
 				width: 100%;
@@ -53,10 +61,12 @@
 			.up-container .movie h2 {
 				margin-top: 0;
 				text-align: center;
+				color:white;
 			}
 			.up-container .movie p {
 				margin-bottom: 0;
 				text-align: center;
+				color:white;
 			}
 
 			.up-container .movies-list {

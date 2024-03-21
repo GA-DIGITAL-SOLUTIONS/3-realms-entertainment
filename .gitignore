@@ -1,7 +1,7 @@
 **/__pycache__/**
 **/venv/**
 **/migrations/**
-**/media/theater_images/**
-**/media/movie_images/**
-db.sqlite3
+# **/media/theater_images/**
+# **/media/movie_images/**
+# db.sqlite3
 .env

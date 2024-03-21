@@ -5,7 +5,11 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Latest Movies Uploading</title>
+		<title>3 Realms-Latest Movies</title>
+		<link rel="shortcut icon" type="image/png" href="{% get_media_prefix %}favicon.png" >
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 		<style>
 			body {
 				background-color: #191717 !important;
@@ -13,13 +17,16 @@
 				font-family: Arial, sans-serif;
 			}
 
+			*{
+				font-family: 'Quicksand' ;
+			}
+			
 			.movie-item {
 				margin: 20px auto;
 				background-color: #eee;
 				height: 400px !important;
 				width: 300px !important;
 			}
-
 
 			.movies-cont {
 				display: grid;
@@ -61,6 +68,19 @@
 			}
 
 			.button {
+				border: 1px solid #ff9900;
+				padding: 10px 20px;
+				text-align: center;
+				color:white;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin-top: 10px;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			.button:hover {
 				background-color: #ff9900;
 				border: none;
 				color: #fff;
@@ -123,7 +143,7 @@
 			}
 			.banner img {
 				width: 100%;
-				height: auto;
+				height: 400px;
 				padding: 0px;
 				margin: 0px;
 			}

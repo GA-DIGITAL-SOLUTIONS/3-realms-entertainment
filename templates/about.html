@@ -7,6 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>3 Realms-About</title>
 		<link rel="shortcut icon" type="image/png" href="{% get_media_prefix %}favicon.png" >
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 		<style>
 			/* CSS for styling */
 			header {
@@ -14,6 +17,10 @@
 				color: #fff;
 				text-align: center;
 				overflow-x: hidden;
+			}
+
+			*{
+				font-family: 'Quicksand';
 			}
 
 			body {
@@ -42,22 +49,42 @@
 			}
 			.left-image {
 				float: left;
-				width: 45%;
+				width: 50%;
 				margin-bottom: 20px;
+			}
+
+			.left-image img{
+				width:100%;
+				height:400px !important;
 			}
 
 			.right-text {
 				float: right;
 				width: 45%;
 			}
+
 			.vision-mission {
-				text-align: center;
+				text-align: justify;
 				overflow: hidden;
 				margin-top: 50px;
+				display: flex;
+				flex-direction:row;
 			}
+
+			.vision-mission p{
+				margin:10px;
+			}
+
+
+			.vision-mission img{
+				height:400px;
+				width:400px;
+			}
+
 			.column-vision-mission {
-				width: 45%;
-				display: inline-block;
+				width: 50%;
+				display: flex;
+				flex-direction:column;
 				padding: 0 30px;
 				box-sizing: border-box;
 				margin-bottom: 20px;
@@ -70,11 +97,13 @@
 				box-sizing: border-box;
 				margin-bottom: 20px;
 			}
+
 			.counter-items {
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
 			}
+
 			.counter-item {
 				width: 270px;
 				margin: 5px;
@@ -85,13 +114,18 @@
 				box-sizing: border-box;
 				margin-bottom: 20px;
 			}
+
 			.counter-item h3 {
 				margin-top: 0;
+				color: black;
 			}
+
 			.counter-item div {
 				font-size: 24px;
 				font-weight: bold;
+				color:black;
 			}
+
 			.social-media-icons {
 				list-style-type: none;
 				padding: 0;
@@ -99,10 +133,13 @@
 				text-align: center;
 				margin-top: 50px;
 			}
+
 			.social-media-icons li {
 				display: inline-block;
 				margin: 0 10px;
 			}
+
+
 			.social-media-icons li:last-child {
 				margin-right: 0;
 			}
@@ -110,12 +147,15 @@
 				color: #fff;
 				font-size: 24px;
 			}
+			
 			.banner {
 				position: relative;
 			}
 			.banner img {
 				width: 100%;
-				height: auto;
+				height: 400px;
+				object-fit:cover;
+
 			}
 			.banner-text {
 				position: absolute;
@@ -208,7 +248,7 @@
 	</head>
 	<body>
          {% include "header.html" with active_page="about" %}
-		<div>
+		<div class="about-banner">
 			<div class="banner">
 				<img src='{% get_media_prefix %}banners/aboutusbanner.jpg' alt="Banner Image" />
 				<div class="banner-text">
@@ -223,18 +263,18 @@
 					<img
 						src='{% get_media_prefix %}banners/about-us-img.jpg'
 						alt="Left Image"
-						style="max-width: 100%; height: auto" />
+						 />
 				</div>
 				<div class="right-text">
 					<h2>About Us</h2>
 					<p>
-						At 3 Realms Entertainment, we’re dedicated to bringing the vibrant
+						At 3 Realms Entertainment, we're dedicated to bringing the vibrant
 						world of Indian cinema to European audiences. Based in Germany, our
 						mission is to enrich cultural exchange through carefully curated
 						films, ranging from Bollywood blockbusters to independent gems.
 					</p>
 					<p>
-						With a commitment to excellence and personalized service, we’re your
+						With a commitment to excellence and personalized service, we're your
 						trusted gateway to Indian cinema, ensuring an unforgettable viewing
 						experience.
 					</p>
@@ -253,11 +293,11 @@
 
 		<section>
 			<div class="container">
+				<center><h2><strong>Vision & Mission</strong></h2></center>
 				<div class="vision-mission">
-					<h2>Vision & Mission</h2>
 					<div class="column-vision-mission">
-						<h3>Vision</h3>
-						<img src='{% get_media_prefix %}banners/vision.jpg' alt="Vision Image" />
+						<center><h3>Vision</h3></center><br>
+						<center><img src='{% get_media_prefix %}banners/vision.jpg' alt="Vision Image" /></center>
 						<p>
 							To lead the European film distribution sector, introducing
 							audiences to the richness of Indian cinema and using the power of
@@ -265,10 +305,10 @@
 						</p>
 					</div>
 					<div class="column-vision-mission">
-						<h3>Mission</h3>
-						<img src='{% get_media_prefix %}banners/mission.jpg' alt="Mission Image" />
+						<center><h3>Mission</h3></center><br>
+						<center><img src='{% get_media_prefix %}banners/mission.jpg' alt="Mission Image" /></center>
 						<p>
-							We’re dedicated to sharing outstanding Indian films with European
+							We're dedicated to sharing outstanding Indian films with European
 							audiences, guided by our commitment to creativity, integrity, and
 							a profound love for cinema, aiming to enrich lives and inspire
 							positive change through storytelling.

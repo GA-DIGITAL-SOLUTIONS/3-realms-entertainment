@@ -2,14 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 		<style>
 			/* CSS for footer */
 			.footer {
 				background-color: #191717;
-				padding: 50px 20px;
+				padding: 20px 10px;
 				text-align: center;
 			}
 
@@ -105,6 +103,11 @@
 				border-bottom: 1px solid #000; /* Add your desired border-bottom style */
 			}
 
+			footer .copyright {
+				display: flex;
+				justify-content: space-around;
+			}
+
 			@media screen and (max-width: 600px) {
 				.footer .footer-column {
 					padding: 0px !important;
@@ -132,11 +135,11 @@
 					<!-- Column 1: Logo and Short Description -->
 					<div class="footer-column" style="padding: 30px">
 						<img
-							src="{% get_media_prefix  %}/logo.svg"
+							src="{% get_media_prefix  %}/logo.png"
 							alt="Logo"
 							class="footer-logo" />
 						<p class="footer-description">
-							3 Realms Entertainment – Your Passport to Indian Cinema. Explore
+							3 Realms Entertainment - Your Passport to Indian Cinema. Explore
 							the magic with our curated selection of Bollywood blockbusters and
 							independent gems. Join us in fostering cultural exchange through
 							the transformative power of storytelling.
@@ -229,7 +232,7 @@
 
 			<footer class="copyright">
 				<p>
-					&copy; Copyright © 2024, 3 Realms Entertainment – All Rights Reserved.
+					&copy; Copyright © 2024, 3 Realms Entertainment - All Rights Reserved.
 				</p>
 
 				<p>
