@@ -58,20 +58,18 @@
     opacity: 1; /* Hover opacity */
 }
 
-/* Style for movies container */
 .movies {
     display: grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-columns:1fr 1fr 1fr 1fr !important;
+    gap: 25px;
     margin-top:10px;
 }
 
 .movie{
-    height:400px !important;
-    width:350px !important;
+    cursor:pointer
 }
 .movie img {
-    width: 350px;
+    width:280px;
     height: 400px;
     object-fit:cover;
 }
@@ -90,17 +88,27 @@ body {
     background-color: #191717 !important;
     margin: 0;
     padding: 0;
+    width:100vw;
+				overflow-x:hidden;
+				overflow-y:auto;
 }
 
+.title{
+    background:#191717;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
 /* Media Queries for responsive design */
 
-/* For screens up to 768px wide (tablets) */
 @media (max-width: 768px) {
     .movies {
         justify-content: center;
         margin:15px;
+        grid-template-columns:1fr !important;
+        place-items:center;
     }
-    
+
     .movie img {
         width: 250px;
     }
@@ -115,19 +123,12 @@ body {
     font-size: 18px;
     color: #db8126;
 }
-}
-
-.title{
-    background:#191717;
-    padding: 15px;
-    color: white;
-    text-align: center;
-}
-
-/* For screens up to 480px wide (phones) */
-@media (max-width: 480px) {
-    .banner-text h1 {
+.banner-text h1 {
         font-size: 20px;
+    }
+
+    .banner img{
+        height:200px;
     }
 
     .title{
@@ -135,8 +136,10 @@ body {
         background:#191717;
         padding: 15px;
     }
-
 }
+
+
+
 </style>
 </head>
 <body>
@@ -154,9 +157,9 @@ body {
 
 <!-- Tabs for filtering -->
 <div class="tabs">
-  <div class="tab" onclick="filterMovies('all')">All Movies</div>
-  <div class="tab" onclick="filterMovies('telugu')">Telugu Movies</div>
-  <div class="tab" onclick="filterMovies('tamil')">Tamil Movies</div>
+  <div class="tab" onclick="filterMovies('all')">All</div>
+  <div class="tab" onclick="filterMovies('telugu')">Telugu</div>
+  <div class="tab" onclick="filterMovies('tamil')">Tamil</div>
 </div>
 
 
@@ -164,21 +167,16 @@ body {
 <!-- Movie items -->
 <div class="movies">
 
-     {% for movie in all_movies%}
-    <div class="movie all">
-        <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
-    </div>
-    {% endfor %}
-
+     
 
     {% for movie in telugu_movies%}
-    <div class="movie telugu">
+    <div class="movie telugu all">
         <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
     </div>
     {% endfor %}
 
      {% for movie in tamil_movies%}
-    <div class="movie tamil">
+    <div class="movie tamil all">
         <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
     </div>
     {% endfor %}

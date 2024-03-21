@@ -6,21 +6,29 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>3 Realms-Latest Movies</title>
-		<link rel="shortcut icon" type="image/png" href="{% get_media_prefix %}favicon.png" >
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+		<link
+			rel="shortcut icon"
+			type="image/png"
+			href="{% get_media_prefix %}favicon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+			rel="stylesheet" />
 		<style>
 			body {
 				background-color: #191717 !important;
 				margin: 0;
 				font-family: Arial, sans-serif;
+				width: 100vw;
+				overflow-x: hidden;
+				overflow-y: auto;
 			}
 
-			*{
-				font-family: 'Quicksand' ;
+			* {
+				font-family: "Quicksand";
 			}
-			
+
 			.movie-item {
 				margin: 20px auto;
 				background-color: #eee;
@@ -30,7 +38,7 @@
 
 			.movies-cont {
 				display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr;
+				grid-template-columns: 1fr 1fr 1fr 1fr;
 			}
 
 			.background-image {
@@ -58,8 +66,7 @@
 			.overlay h2 {
 				margin-top: 20px;
 				text-align: center;
-                color: #ff9900;
-
+				color: #ff9900;
 			}
 
 			.overlay p {
@@ -71,7 +78,7 @@
 				border: 1px solid #ff9900;
 				padding: 10px 20px;
 				text-align: center;
-				color:white;
+				color: white;
 				text-decoration: none;
 				display: inline-block;
 				font-size: 16px;
@@ -112,15 +119,13 @@
 				padding: 20px;
 				border: 1px solid #888;
 				width: 60vw !important;
-                height: 70%  !important;
+				height: 70% !important;
 			}
 
-            .modal-content iframe{
-                width: calc(60vw - 40px) !important;
-                height: 100%  !important;
-            }
-
-
+			.modal-content iframe {
+				width: calc(60vw - 40px) !important;
+				height: 100% !important;
+			}
 
 			.close {
 				color: #aaa;
@@ -161,25 +166,28 @@
 				font-size: 36px;
 			}
 
-            @media(max-width:768px) {
-                .movies-cont {
-				display: grid;
-                grid-template-columns: 1fr;
-			}
-            .modal-content {
-				background-color: #fefefe;
-				margin: 10% auto;
-				padding: 20px;
-				border: 1px solid #888;
-				width: 90vw !important;
-                height: 40%  !important;
-			}
+			@media (max-width: 768px) {
+				.movies-cont {
+					display: grid;
+					grid-template-columns: 1fr;
+				}
+				.modal-content {
+					background-color: #fefefe;
+					margin: 10% auto;
+					padding: 20px;
+					border: 1px solid #888;
+					width: 90vw !important;
+					height: 40% !important;
+				}
 
-            .modal-content iframe{
-                width: calc(90vw - 40px) !important;
-                height: 100%  !important;
-            }
-            }
+				.modal-content iframe {
+					width: calc(90vw - 40px) !important;
+					height: 100% !important;
+				}
+				.banner img {
+					height: 200px;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -212,13 +220,13 @@
 							onclick="openModal('{{ movie.trailer_link }}')"
 							>Watch Now</a
 						>
-						<a href="{% url 'movie_synopsis' movie.id %}" class="button">Book Now</a>
+						<a href="{% url 'movie_synopsis' movie.id %}" class="button"
+							>Book Now</a
+						>
 					</div>
 				</div>
 
 				{% endfor %}
-
-
 			</div>
 		</div>
 		<div id="myModal" class="modal">
@@ -226,7 +234,6 @@
 				<span class="close" onclick="closeModal()">&times;</span>
 				<iframe
 					id="videoPlayer"
-					
 					src=""
 					frameborder="0"
 					allowfullscreen></iframe>

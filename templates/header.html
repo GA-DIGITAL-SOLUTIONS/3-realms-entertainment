@@ -11,20 +11,13 @@
 			.nav-link {
 				font-size: 18px;
 				margin-right: 10px;
+				font-weight:600;
 			}
-			.bg-dark {
-				background-color: transparent !important;
-				background: transparent !important;
-			}
+		
 			.header {
 				background-color: transparent !important;
 				background: transparent !important;
 			}
-
-			.navbar {
-				height:100px;
-			}
-
 
 			.navbar-brand {
 				margin-left: 40px;
@@ -39,25 +32,30 @@
 					width: 250px;
 					margin-right: 5px;
 				}
+				.navbar-brand {
+				margin-left: 0px;
+			}
+
+			.navbar-brand img{
+				width:150px;
+			}
 				.navbar button {
 					border: 2px solid #df6d25 !important;
 				}
 			}
-		
+
 			.navbar-nav {
 				margin-right: 40px;
 			}
 		</style>
 	</head>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:black">
 		<a class="navbar-brand" href="#">
 			<img
-				src="{% get_media_prefix  %}/logo.png"
-				width="40"
-				height="80"
-				="class"
-				="d-inline-block align-top"
+				src="{% get_media_prefix  %}/text-logo.svg"
+				width="180"
+				class="d-inline-block align-top"
 				alt="Logo" />
 		</a>
 		<button

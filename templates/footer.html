@@ -6,16 +6,20 @@
 		<style>
 			/* CSS for footer */
 			.footer {
-				background-color: #191717;
-				padding: 20px 10px;
+				background-color: black;
 				text-align: center;
+				padding:10px;
+				width:100vw;
 			}
 
 			.footer .footer-columns {
 				display: flex;
 				flex-wrap: wrap;
-				justify-content:center;
+				justify-content:space-between !important;
 				align-items: center;
+				position:relative;
+				left:60%;
+				transform:translateX(-50%);
 			}
 
 			.footer .footer-column {
@@ -105,8 +109,9 @@
 
 			.footer .copyright {
 				display: flex;
+				padding-top:20px;
 				justify-content: space-around;
-				margin-bottom:-10px;
+				border-top: 0.5px solid #232222;
 			}
 
 			@media screen and (max-width: 600px) {
@@ -125,11 +130,28 @@
 					color: #cdcaca;
 					margin: 2px 20px 20px 0px;
 				}
+				.footer .footer-columns {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content:space-between !important;
+				align-items: center;
+				position:relative;
+				left:50%;
+				transform:translateX(-50%);
+			}
+			.footer .copyright {
+				display: flex;
+				padding-top:20px;
+				flex-direction:column;
+				font-size:12px;
+				justify-content: space-around;
+				border-top: 0.5px solid #232222;
+			}
 			}
 		</style>
 	</head>
 	<body>
-		<footer class="footer">
+		<footer class="">
 			<div class="footer-1">
 				<div class="footer-columns">
 					<!-- Column 1: Logo and Short Description -->
@@ -140,7 +162,7 @@
 							class="footer-logo" />
 						<p class="footer-description">
 							3 Realms Entertainment - Your Passport to Indian Cinema. Explore
-							the magic with our curated selection of Bollywood blockbusters and
+							the magic with our curated selection of Indian Cinema and
 							independent gems. Join us in fostering cultural exchange through
 							the transformative power of storytelling.
 						</p>
@@ -208,28 +230,9 @@
 						</ul>
 					</div>
 				</div>
-				{% comment %} <div class="container">
-					<div class="row">
-						<div class="col">
-							<ul class="social-media-icons">
-								<li>
-									<a href="#"><i class="fab fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fab fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fab fa-instagram"></i></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div> {% endcomment %}
-			</div>
-			<div class="separator">
-				<div class="separator-line"></div>
-			</div>
 
+			</div>
+			
 			<footer class="copyright">
 				<p>
 					&copy; Copyright © 2024, 3 Realms Entertainment - All Rights Reserved.

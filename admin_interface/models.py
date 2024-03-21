@@ -1,6 +1,11 @@
 from django.db import models
 
 class Movie(models.Model):
+    LANGUAGE_CHOICES = {
+        'TELUGU': 'TELUGU',
+        'TAMIL': 'TAMIL',
+    }
+    
     title = models.CharField(max_length=100)
     genere = models.CharField(max_length=100)
     description = models.TextField()
@@ -9,7 +14,7 @@ class Movie(models.Model):
     actress = models.CharField(max_length = 100)
     director = models.CharField(max_length=100)
     release_date = models.DateField()
-    language = models.CharField(max_length = 50)
+    language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES)
     trailer_link = models.URLField()
     image = models.ImageField(upload_to='movie_images/')
     subtitle_language = models.CharField(max_length=100)
@@ -52,7 +57,7 @@ class Showtime(models.Model):
 class UpcomingMovie(models.Model):
     title = models.CharField(max_length=100)
     release_date = models.DateField(null=True,blank=True)
-    image = models.ImageField(upload_to='movie_images/')
+    image = models.ImageField(upload_to='upcoming_movie_images/')
 
     def __str__(self):
         return self.title
@@ -72,10 +77,8 @@ class UpcomingMovie(models.Model):
 
 class Portfolio(models.Model):
     LANGUAGE_CHOICES = {
-        'ENGLISH': 'ENGLISH',
         'TELUGU': 'TELUGU',
         'TAMIL': 'TAMIL',
-        'HINDI': 'HINDI',
     }
 
     title = models.CharField(max_length=100)

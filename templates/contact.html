@@ -9,13 +9,18 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 		<title>3 Realms-Contact</title>
-		<link rel="shortcut icon" type="image/png" href="{% get_media_prefix %}favicon.png" >
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+		<link
+			rel="shortcut icon"
+			type="image/png"
+			href="{% get_media_prefix %}favicon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+			rel="stylesheet" />
 		<style>
-			*{
-				font-family: 'Quicksand';
+			* {
+				font-family: "Quicksand";
 			}
 			.banner {
 				position: relative;
@@ -47,7 +52,9 @@
 				margin: 0px;
 				padding: 0px;
 				font-family: Arial, sans-serif;
-				display:block;
+				display: block;
+				width:100vw;
+				overflow-x:hidden;
 			}
 			#contact {
 				padding: 50px 0;
@@ -57,11 +64,11 @@
 				margin: auto;
 				overflow: hidden;
 				padding: 0 20px;
-				
 			}
-			.contact-main-container{
-                display: inline-block;
-            }
+			.contact-main-container {
+				display: inline-block;
+				margin-bottom:50px;
+			}
 			.icon-box-container {
 				display: flex;
 				justify-content: space-around;
@@ -69,13 +76,12 @@
 			}
 			.icon-box {
 				text-align: center;
-				background-color: #fff;
+				border: 1px solid #232222;
 				padding: 50px;
-
-				border-radius: 5px;
+				border-radius: 10px;
 				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-				width:400px;
-				margin-left:20px;
+				width: 400px;
+				margin-left: 20px;
 			}
 			.icon-box i {
 				font-size: 36px;
@@ -85,11 +91,12 @@
 			.icon-box h3 {
 				margin: 10px 0;
 				font-size: 20px;
+				color: white;
 			}
 			.icon-box p {
 				margin: 0;
 				font-size: 16px;
-				color:black;
+				color: white;
 			}
 			#map-and-form {
 				padding: 50px 0;
@@ -109,9 +116,10 @@
 				width: 100%;
 				margin-bottom: 20px;
 				padding: 10px;
-				border: 1px solid #ccc;
+				border: 1px solid #232222;
 				border-radius: 5px;
 				box-sizing: border-box;
+				background:none;
 			}
 			.column form button {
 				background-color: #db8126;
@@ -159,11 +167,11 @@
 
 				.icon-box {
 					text-align: center;
-					background-color: #fff;
-					padding: 20px;
 					border-radius: 5px;
 					box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 					width: 100%;
+					margin:0px;
+					padding:20px;
 				}
 
 				.contact-container {
@@ -179,86 +187,92 @@
 
 				.icon-box p {
 					margin: 0;
-					font-size: 12px;
+					font-size: 16px;
 					display: flex;
 					align-items: center;
 					flex-direction: column;
+				}
+				.banner img {
+					height: 200px;
+					width:100vw;
 				}
 			}
 		</style>
 	</head>
 	<body>
-     {% include "header.html" with active_page="contact" %}
-	 <div class="contact-main-container">
-		<div>
-			<div class="banner">
-				<img src='{% get_media_prefix %}banners/contact-us-banner.jpg' alt="Banner Image" />
-				<div class="banner-text">
-					<h1>Contact Us</h1>
+		{% include "header.html" with active_page="contact" %}
+		<div class="contact-main-container">
+			<div>
+				<div class="banner">
+					<img
+						src="{% get_media_prefix %}banners/contact-us-banner.jpg"
+						alt="Banner Image" />
+					<div class="banner-text">
+						<h1>Contact Us</h1>
+					</div>
 				</div>
 			</div>
+
+			<section id="contact">
+				<div class="contact-container">
+					<div class="icon-box-container">
+						<div class="icon-box">
+							<i class="fa fa-map-marker-alt"></i>
+							<h3>Address</h3>
+							<p>Wisthoffweg Essen 45139, Germany</p>
+						</div>
+						<div class="icon-box">
+							<i class="fa fa-phone"></i>
+							<h3>Phone</h3>
+							<p>15257675948</p>
+						</div>
+						<div class="icon-box">
+							<i class="fa fa-envelope"></i>
+							<h3>Email</h3>
+							<p>contact@3realmsentertainment.com</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="map-and-form">
+				<div class="container">
+					<div class="column">
+						<!-- Google Maps Embed code here -->
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.0306947246163!2d7.042809676617091!3d51.45759287180201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8dd423f8cde05%3A0xa5f012ac9c7074dd!2sWisthoffweg%2C%2045139%20Essen-Stadtbezirke%20I%2C%20Germany!5e0!3m2!1sen!2sin!4v1710663349908!5m2!1sen!2sin"
+							width="600"
+							height="350"
+							style="border: 0"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+					<div class="column">
+						<form method="post" action="sendmail">
+							{% csrf_token %}
+							<input type="text" name="name" placeholder="Your Name" required />
+							<input
+								type="email"
+								name="email"
+								placeholder="Your Email"
+								required />
+							<input
+								type="phone"
+								name="phone"
+								placeholder="Your Phone Number"
+								required />
+							<textarea
+								name="message"
+								placeholder="Your Message"
+								required
+								style="height: 200px"></textarea>
+							<button type="submit">Send Message</button>
+						</form>
+					</div>
+				</div>
+			</section>
 		</div>
-
-		<section id="contact">
-			<div class="contact-container">
-				<div class="icon-box-container">
-					<div class="icon-box">
-						<i class="fa fa-map-marker-alt"></i>
-						<h3>Address</h3>
-						<p>Wisthoffweg Essen 45139, Germany</p>
-					</div>
-					<div class="icon-box">
-						<i class="fa fa-phone"></i>
-						<h3>Phone</h3>
-						<p>15257675948</p>
-					</div>
-					<div class="icon-box">
-						<i class="fa fa-envelope"></i>
-						<h3>Email</h3>
-						<p>contact@3realmsentertainment.com</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="map-and-form">
-			<div class="container">
-				<div class="column">
-					<!-- Google Maps Embed code here -->
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.0306947246163!2d7.042809676617091!3d51.45759287180201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8dd423f8cde05%3A0xa5f012ac9c7074dd!2sWisthoffweg%2C%2045139%20Essen-Stadtbezirke%20I%2C%20Germany!5e0!3m2!1sen!2sin!4v1710663349908!5m2!1sen!2sin"
-						width="600"
-						height="350"
-						style="border: 0"
-						allowfullscreen=""
-						loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade"></iframe>
-				</div>
-				<div class="column">
-					<form method="post" action="sendmail">
-						{% csrf_token %}
-						<input type="text" name="name" placeholder="Your Name" required />
-						<input
-							type="email"
-							name="email"
-							placeholder="Your Email"
-							required />
-						<input
-							type="phone"
-							name="phone"
-							placeholder="Your Phone Number"
-							required />
-						<textarea
-							name="message"
-							placeholder="Your Message"
-							required
-							style="height: 200px"></textarea>
-						<button type="submit">Send Message</button>
-					</form>
-				</div>
-			</div>
-		</section>
-	</div>
 		<div>
 			<div class="footer">{% include "footer.html" %}</div>
 		</div>
