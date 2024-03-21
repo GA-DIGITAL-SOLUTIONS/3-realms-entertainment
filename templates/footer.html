@@ -13,8 +13,9 @@
 
 			.footer .footer-columns {
 				display: flex;
-				justify-content: space-between;
 				flex-wrap: wrap;
+				justify-content:center;
+				align-items: center;
 			}
 
 			.footer .footer-column {
@@ -45,14 +46,13 @@
 			.footer .contact-details li {
 				margin-bottom: 10px;
 				color: #cdcaca;
-				border-bottom: 1px solid #cdcaca;
 				margin: 2px 50px 5px 0px;
 			}
 
 			.footer .quick-links li {
 				margin-bottom: 10px;
 				color: #cdcaca;
-				border-bottom: 1px solid #cdcaca;
+			
 				margin: 2px 50px 20px 0px;
 			}
 			.footer .contact-details h4,
@@ -103,9 +103,10 @@
 				border-bottom: 1px solid #000; /* Add your desired border-bottom style */
 			}
 
-			footer .copyright {
+			.footer .copyright {
 				display: flex;
 				justify-content: space-around;
+				margin-bottom:-10px;
 			}
 
 			@media screen and (max-width: 600px) {
@@ -116,13 +117,12 @@
 				.footer .contact-details li {
 					margin-bottom: 10px;
 					color: #cdcaca;
-					border-bottom: 1px solid #cdcaca;
+					
 					margin-right: 0px;
 				}
 				.footer .quick-links li {
 					margin-bottom: 10px;
 					color: #cdcaca;
-					border-bottom: 1px solid #cdcaca;
 					margin: 2px 20px 20px 0px;
 				}
 			}
@@ -133,7 +133,7 @@
 			<div class="footer-1">
 				<div class="footer-columns">
 					<!-- Column 1: Logo and Short Description -->
-					<div class="footer-column" style="padding: 30px">
+					<div class="footer-column">
 						<img
 							src="{% get_media_prefix  %}/logo.png"
 							alt="Logo"
@@ -208,7 +208,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="container">
+				{% comment %} <div class="container">
 					<div class="row">
 						<div class="col">
 							<ul class="social-media-icons">
@@ -224,7 +224,7 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> {% endcomment %}
 			</div>
 			<div class="separator">
 				<div class="separator-line"></div>

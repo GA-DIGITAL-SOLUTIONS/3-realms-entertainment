@@ -160,7 +160,6 @@
 			}
 
 			.swiper-slide {
-				font-size: 18px;
 				background: #fff;
 			}
 
@@ -303,18 +302,21 @@
 					grid-template-columns:1fr 1fr 1fr 1fr;
 					overflow:hidden;
 					gap:20px;
+					cursor:pointer;
 				}
 
 			@media(max-width: 768px) {
-				.movies-container {
-					display: block;
-					overflow-x: auto;
-					overflow-y: hidden;
-				}
+				
 				.swiper-wrapper{
-					display:grid;
-					grid-template-columns:1fr 1fr 1fr 1fr;
+					display:flex;
+					padding:0;
 					overflow:auto;
+				}
+
+				.swiper-slide {
+					padding:0px;
+					margin:0px;
+					
 				}
 				.modal-content {
 				background-color: #fefefe;
@@ -332,23 +334,17 @@
 
 				.lt-mv-item {
 					width:100vw;
+					padding:0px;
+					margin:0px !important;
 				}
 				
-				.latest-movie-cont h2 {
-					color: white;
-					padding: 10px;
-					background: orange;
-					width: max-content;
-					border-radius: 20px;
-					font-size: 20px;
-				}
-				.section-head{
+				
+				.latest-movie-cont .section-head{
 					font-size:20px;
 					border-radius:10px !important;
 					padding:10px !important;
 					position:relative;
-					left:50%;
-					transform:translateX(-50%);
+					right:calc(100vw - 300px);
 				}
 				.slideshow-container{
 					height:250px;
@@ -393,14 +389,49 @@
 				font-weight: 600;
 			}
 
-				
-			
-			
-				
-			
 			.movie-item h2 {
 				font-size:20px;
 				}
+				.swiper-wrapper{
+					display:flex;
+					overflow:auto;
+					gap:20px;
+				}
+				::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+				.view-more a {
+					color: #df6d25;
+					text-decoration: none;
+					font-size: 16px;
+					padding:5px 10px;
+					width:max-content;
+					cursor: pointer;
+					position:relative;
+					top: -45px;
+					left:calc(100vw - 150px);
+					font-weight: 700;
+					border: 1px solid #df6d25;
+					border-radius:10px;
+				}
+				.latest-movie-cont{
+					width:calc(100vw);
+				}
+				.swiper-container {
+    width: 100%;
+    padding: 0px;
+}
 			}
 		</style>
 	</head>
