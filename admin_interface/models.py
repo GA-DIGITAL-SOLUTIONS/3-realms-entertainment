@@ -97,4 +97,24 @@ class Portfolio(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete(save=False)
         super(Portfolio, self).delete(*args, **kwargs)
-        
+
+
+class MovieBanner(models.Model):
+    movie = models.ForeignKey(Movie,on_delete = models.CASCADE)
+    image = models.ImageField(upload_to='banner_images/')
+
+    def __str__(self):
+        return self.movie.title
+    
+    def save(self, *args, **kwargs):
+        try:
+            this = MovieBanner.objects.get(id=self.id)
+            if this.image != self.image:
+                this.image.delete(save=False)
+        except:
+            pass
+        super(MovieBanner, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=False)
+        super(MovieBanner, self).delete(*args, **kwargs)

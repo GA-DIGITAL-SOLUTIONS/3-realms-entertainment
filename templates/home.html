@@ -21,47 +21,57 @@
 
 			/* Slideshow styles */
 			.slideshow-container {
-				max-width: 1920px;
+				width:100vw;
 				position: relative;
 				margin: auto;
 				overflow: hidden;
-				height: 600px;
+				height: calc(100vh - 100px);
 			}
 
 			.slide {
 				display: none;
 				text-align: center;
 				position: relative;
-				height: 600px;
-				background-size: cover;
-				background-position: center;
+				height: 100%;
 			}
 
 			.slide .content {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+				height:100%;
+				width:100%;
 				color: white;
-				text-align: center;
+				background: rgba(0, 0, 0, 0.8);
+				display:flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				gap:20px;
+				padding-left:100px;
 			}
 
 			.slide .content h2 {
-				font-size: 42px;
+				font-size: 56px;
 				margin-bottom: 10px;
+				text-align:left;
+			}
+			.slide .content h2 span{
+				font-size: 30px;
+				margin-bottom: 10px;
+				margin-left:5px;
 			}
 
 			.slide .content p {
-				font-size: 16px;
-				margin-bottom: 20px;
+				font-size: 24px;
+				font-weight: 600;
+				text-align: left;
 			}
+
 			.slide .button {
 				display: inline-block;
 				padding: 10px 20px;
-				color: #df6d25;
+				color: white;
 				text-decoration: none;
 				font-size: 16px;
-				border: 1px solid #df6d25;
+				border: 1px solid white;
 				cursor: pointer;
 			}
 
@@ -203,41 +213,31 @@
 			}
 
 			.movie-item {
-				height:400px;
+				height:450px;
 				border: 1px solid #ccc;
 				padding:0px;
 				margin-bottom: 20px;
+				background-color: transparent !important;
 				border:none;
 			}
 
-			.movie-item div{
-				width:100%;
-				height:100%;
-				display:hidden !important;
-			}
+	
 
-			.movie-item div:hover{
+			.movie-item div{
+				opacity:0;
 				background: rgba(0, 0, 0, 0.5);
+				height:100%;
+				width:100%;
 				padding:10px;
 				display:flex;
 				flex-direction: column;
-				justify-content:flex-end;
+				justify-content:center;
 				align-items: center;
 			}
 
-			.movie-item h2 {
-				margin-top: -10px;
-				margin-bottom: -10px;
-				text-align: center !important;
-				color:white !important;
+			.movie-item div:hover{
+				opacity:1;
 			}
-
-			.movie-item p {
-				margin-bottom: 10px;
-				text-align: center;
-				color:white !important;
-			}
-
 
 			.modal {
 				display: none;
@@ -265,17 +265,19 @@
 				color: #df6d25;
 				text-decoration: none;
 				font-size: 16px;
+				width:max-content;
 				cursor: pointer;
-				text-align:right;
+				position:relative;
+				left:calc(100vw - 150px);
 				font-weight: 600;
+				border: 1px solid #df6d25;
+				border-radius: 10px;
 			}
 
 			.view-more a:hover {
-				font-size: 16px;
-				color: #df6d25;
-				font-weight:700;
-				border: none;
+				color: white;
 				cursor: pointer;
+				background-color: #df6d25;
 			}
 
             .modal-content iframe{
@@ -283,7 +285,18 @@
                 height: 100%  !important;
             }
 
-			
+			.movie-item h2 {
+				margin-top: -10px;
+				margin-bottom: -10px;
+				text-align: center !important;
+				color:white !important;
+			}
+
+			.movie-item p {
+				margin-bottom: 10px;
+				text-align: center;
+				color:white !important;
+			}
 
 			.swiper-wrapper{
 					display:grid;
@@ -338,24 +351,49 @@
 					transform:translateX(-50%);
 				}
 				.slideshow-container{
-					height:300px;
+					height:250px;
 				}
-				.slide {
-				display: none;
-				text-align: center;
-				position: relative;
-				height: 200px;
-				background-size: cover;
-				background-position: center;
+
+				.slide .button {
+				display: inline-block;
+				padding: 5px 10px;
+				color: white;
+				text-decoration: none;
+				font-size: 14px;
+				border: 1px solid white;
+				cursor: pointer;
+			}
+				
+				.slide .content {
+				height:100%;
+				width:100%;
+				color: white;
+				background: rgba(0, 0, 0, 0.8);
+				display:flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				gap:10px;
+				padding:20px;
 			}
 
-			.slide .content {
-				width:calc(100vw - 50px)
+			.slide .content h2 {
+				font-size: 26px;
+				margin-bottom: 10px;
 			}
-			
-			.slide .content h2{
-				font-size:24px !important;
+			.slide .content h2 span{
+				font-size: 20px;
+				margin-bottom: 5px;
+				margin-left:5px;
+				display:block;
 			}
+
+			.slide .content p {
+				font-size: 18px;
+				font-weight: 600;
+			}
+
+				
 			
 			
 				
@@ -369,41 +407,32 @@
 	<body>
 		{% include "header.html" with active_page="home" %}
 		<div class="slideshow-container">
+			{% for banner in banners %}
 			<div
 				class="slide slide1"
 				style="
-					background-image: url('{% get_media_prefix %}banners/banner1.jpg');
+					background-image: url('{{banner.image.url}}');
+					background-size:cover;
+                    background-repeat:no-repeat;
+					background-position:center;
 				">
 				<div class="content">
-					<h2>Experience the Magic of Indian Cinema</h2>
-					<p>Bringing India's Finest Films to Europe!</p>
-					<a href="{% url 'about' %}"class="button">Learn More</a>
+					<p>{{banner.movie.genere}} | {{banner.movie.language}}</p>
+					<h2>{{banner.movie.title}}<span>({{banner.movie.release_date}})</span></h2>
+					<div>
+					<a
+							href="#"
+							class="button"
+							onclick="openModal('{{ movie.trailer_link }}')"
+							>Watch Trailer</a
+						>
+						
+						<a href="{% url 'movie_synopsis' banner.movie.id %}" class="button">Book Now</a>
+					</div>
+					
 				</div>
 			</div>
-
-			<div
-				class="slide slide2"
-				style="
-					background-image: url('{% get_media_prefix %}banners/banner2.jpg');
-				">
-				<div class="content">
-					<h2>Your Gateway to Indian Cinema</h2>
-					<p>Personalized Distribution, Global Impact.</p>
-					<a href="{% url 'about' %}"class="button">Discover More</a>
-				</div>
-			</div>
-
-			<div
-				class="slide slide3"
-				style="
-					background-image: url('{% get_media_prefix %}banners/banner3.jpg');
-				">
-				<div class="content">
-					<h2>Unlock the Power of Storytelling</h2>
-					<p>Transforming Lives, One Film at a Time.</p>
-					 <a href="{% url 'about' %}"class="button">Explore More</a>
-				</div>
-			</div>
+			{% endfor %}
 
 			<a class="prev" onclick="changeSlide(-1)">&#10094;</a>
 			<a class="next" onclick="changeSlide(1)">&#10095;</a>
@@ -433,7 +462,7 @@
 							href="#"
 							class="button"
 							onclick="openModal('{{ movie.trailer_link }}')"
-							>Watch Now</a
+							>Watch Trailer</a
 						>
 						
 						<a href="{% url 'movie_synopsis' movie.id %}" class="button">Book Now</a>
@@ -469,7 +498,7 @@
                     background-size:cover;
                     background-repeat:no-repeat;
 				">
-				<div>
+				<div class="up-overlay">
 								<h2>{{movie.title}}</h2>
 								<p>{{ movie.release_date|default:'-' }}</p>
 				</div>

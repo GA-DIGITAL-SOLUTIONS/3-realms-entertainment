@@ -31,9 +31,13 @@ class UpcomingMovieAdmin(admin.ModelAdmin):
 class PortfolioAdmin(admin.ModelAdmin):
     list_display = ('title',)
     search_fields = ('title',)
+    
+# class BannerAdmin(admin.ModelAdmin):
+#     list_display = ('movie',)
 
 custom_admin_site.register(Movie, MovieAdmin)
 custom_admin_site.register(Theater, TheaterAdmin)
 custom_admin_site.register(Showtime, ShowtimeAdmin)
 custom_admin_site.register(UpcomingMovie, UpcomingMovieAdmin)
 custom_admin_site.register(Portfolio, PortfolioAdmin)
+custom_admin_site.register(MovieBanner)

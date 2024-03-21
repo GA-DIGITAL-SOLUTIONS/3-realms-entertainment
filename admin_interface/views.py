@@ -5,9 +5,10 @@ from django.http import HttpResponse
 
 
 def movie_list(request):
+    banners = MovieBanner.objects.all()
     upmovies = UpcomingMovie.objects.filter().order_by('-release_date')[:4]
     movies = Movie.objects.filter().order_by('-release_date')[:4]
-    return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies})
+    return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies,'banners':banners})
 
 def latest_movies(request):
     movies = Movie.objects.all()
