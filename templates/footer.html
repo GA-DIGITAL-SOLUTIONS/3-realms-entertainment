@@ -2,28 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 		<style>
 			/* CSS for footer */
 			.footer {
 				background-color: black;
 				text-align: center;
-				padding:10px;
-				width:100vw;
+				padding: 10px;
+				width: 100vw;
 			}
 
 			.footer .footer-columns {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content:space-between !important;
+				display: grid;
+				grid-template-columns: 1.5fr 1fr 1fr;
+				gap: 50px;
 				align-items: center;
-				position:relative;
-				left:60%;
-				transform:translateX(-50%);
+				position: relative;
+				left: 55%;
+				transform: translateX(-50%);
 			}
 
 			.footer .footer-column {
-				flex: 1;
 				margin: 10px;
 				text-align: left;
 			}
@@ -55,8 +56,8 @@
 
 			.footer .quick-links li {
 				margin-bottom: 10px;
-				color: #cdcaca;
-			
+				color: #eee;
+
 				margin: 2px 50px 20px 0px;
 			}
 			.footer .contact-details h4,
@@ -69,6 +70,7 @@
 			.footer .quick-links a {
 				text-decoration: none;
 				color: #cdcaca;
+				opacity:0.8;
 			}
 
 			.footer .quick-links a:hover {
@@ -83,12 +85,14 @@
 				list-style-type: none;
 				padding: 20px;
 				margin: 0;
+				
 			}
 
 			.footer .social-media-icons li {
 				display: inline-block;
 				margin-right: 10px;
 				color: #cdcaca; /* Adjust margin as needed */
+				
 			}
 
 			.footer .social-media-icons li:last-child {
@@ -100,30 +104,39 @@
 			}
 			.footer .line-text {
 				display: inline-block;
+				opacity:0.8;
 			}
+
 
 			.footer .phone-number,
 			.footer .email {
 				border-bottom: 1px solid #000; /* Add your desired border-bottom style */
+				
 			}
 
 			.footer .copyright {
 				display: flex;
-				padding-top:20px;
+				padding-top: 20px;
 				justify-content: space-around;
 				border-top: 0.5px solid #232222;
 			}
 
 			@media screen and (max-width: 600px) {
+				.footer .footer-columns {
+					display: grid;
+					grid-template-columns: 1fr;
+					gap: 10px;
+					place-items:left;
+					padding:10px;
+				}
 				.footer .footer-column {
 					padding: 0px !important;
-					width:100%;
 				}
 
 				.footer .contact-details li {
 					margin-bottom: 10px;
 					color: #cdcaca;
-					
+
 					margin-right: 0px;
 				}
 				.footer .quick-links li {
@@ -131,24 +144,15 @@
 					color: #cdcaca;
 					margin: 2px 20px 20px 0px;
 				}
-				.footer .footer-columns {
-				display: flex;
-				flex-wrap: wrap;
-				flex-direction: column;
-				justify-content:space-between !important;
-				align-items: center;
-				position:relative;
-				left:50%;
-				transform:translateX(-50%);
-			}
-			.footer .copyright {
-				display: flex;
-				padding-top:20px;
-				flex-direction:column;
-				font-size:12px;
-				justify-content: space-around;
-				border-top: 0.5px solid #232222;
-			}
+				
+				.footer .copyright {
+					display: flex;
+					padding-top: 20px;
+					flex-direction: column;
+					font-size: 12px;
+					justify-content: space-around;
+					border-top: 0.5px solid #232222;
+				}
 			}
 		</style>
 	</head>
@@ -172,7 +176,7 @@
 
 					<!-- Column 2: Contact Details -->
 					<div class="footer-column">
-						<h4>&#8230; Contact Details</h4>
+						<h4>Contact Details</h4>
 						<ul class="contact-details">
 							<li>
 								<i class="fas fa-phone" style="margin-right: 10px"></i>
@@ -206,7 +210,7 @@
 
 					<!-- Column 3: Quick Links -->
 					<div class="footer-column">
-						<h4>&#8230; Quick Links</h4>
+						<h4>Quick Links</h4>
 						<ul class="quick-links">
 							<li>
 								<i class="fas fa-angle-double-right"></i>
@@ -232,9 +236,8 @@
 						</ul>
 					</div>
 				</div>
-
 			</div>
-			
+
 			<footer class="copyright">
 				<p>
 					&copy; Copyright © 2024, 3 Realms Entertainment - All Rights Reserved.
