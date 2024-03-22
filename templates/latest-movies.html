@@ -53,6 +53,9 @@
 			.overlay {
 				opacity: 0;
 				transition: opacity 0.3s ease; /* Adding transition for smooth opacity change */
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 			}
 
 			.overlay:hover {
@@ -65,7 +68,7 @@
 
 			.overlay h2 {
 				margin-top: 20px;
-				text-align: center;
+				text-align: left;
 				color: #ff9900;
 			}
 
@@ -214,6 +217,7 @@
 					<div class="overlay">
 						<h2>{{ movie.title }}</h2>
 						<p>{{ movie.description }}</p>
+						<div>
 						<a
 							href="#"
 							class="button"
@@ -223,6 +227,7 @@
 						<a href="{% url 'movie_synopsis' movie.id %}" class="button"
 							>Book Now</a
 						>
+						</div>
 					</div>
 				</div>
 

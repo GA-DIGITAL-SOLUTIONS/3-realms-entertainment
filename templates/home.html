@@ -103,11 +103,11 @@
 
             .latest-movie-cont{
                 padding:20px;
+				
             }
 
             .latest-movie-cont h2{
                 color:white;
-                padding:20px;
                 border-radius:20px;
 				font-size:36px;
 				font-weight: 600;
@@ -144,6 +144,11 @@
 
 			.lt-mv-item .overlay {
 				opacity: 0;
+				    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	transition: opacity 0.3s ease;
+
 			}
 
 			.lt-mv-item .overlay:hover {
@@ -206,7 +211,7 @@
 
 			.lt-mv-item .overlay h2 {
 				margin-top: 20px;
-				text-align: center;
+				text-align: left;
                 color: #ff9900;
 				background-color:transparent !important;
 			}
@@ -454,7 +459,7 @@
 					<a
 							href="#"
 							class="button"
-							onclick="openModal('{{ movie.trailer_link }}')"
+							onclick="openModal('{{ banner.movie.trailer_link }}')"
 							>Watch Trailer</a
 						>
 						
@@ -489,6 +494,7 @@
 					<div class="overlay">
 						<h2>{{ movie.title }}</h2>
 						<p>{{ movie.description }}</p>
+						<div>
 						<a
 							href="#"
 							class="button"
@@ -497,6 +503,7 @@
 						>
 						
 						<a href="{% url 'movie_synopsis' movie.id %}" class="button">Book Now</a>
+						</div>
 					</div>
 			</div>
                     {% endfor %}
@@ -530,7 +537,7 @@
                     background-repeat:no-repeat;
 				">
 				<div class="up-overlay">
-								<h2>{{movie.title}}</h2>
+								<h2 style="font-size:24px;">{{movie.title}}</h2><br>
 								<p>{{ movie.release_date|default:'-' }}</p>
 				</div>
 							</div>
