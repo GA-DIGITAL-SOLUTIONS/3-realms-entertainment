@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.contrib import messages
 
 
 def movie_list(request):
@@ -23,7 +24,8 @@ def movie_synopsis(request, movie_id):
     
     theaters = Theater.objects.filter(showtimes__movie=movie).distinct()
     location_filter = request.GET.get('location')
-    if location_filter:
+
+    if location_filter and location_filter != 'all':
         theaters = theaters.filter(location=location_filter)
 
     context = {
@@ -69,12 +71,12 @@ def sendmail(request):
         send_mail(
             'New Enquiry',
             notification,
-            '',  
-            ['hemachandra521@gmail.com'],  
+            '3realmsentertainments@gmail.com',  
+            ['3realmsentertainments@gmail.com',],  
             fail_silently=False,
         )
-
-        return HttpResponse('Email sent successfully')  
+        messages.success(request, 'Thank you for contacting us. We will reach you shortly.')
+        return render(request, 'contact.html')
     else:
-        return HttpResponse('Invalid method')  
+        return HttpResponse('Invalid method')
 

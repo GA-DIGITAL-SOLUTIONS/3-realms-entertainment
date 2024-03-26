@@ -587,9 +587,11 @@
 			}
 
 function openModal(videoUrl) {
+	console.log(videoUrl)
 				var modal = document.getElementById("myModal");
 				var videoPlayer = document.getElementById("videoPlayer");
-				videoPlayer.src = videoUrl;
+    			var videoID = videoUrl.match(/youtu\.be\/([^\?]*)/)[1]; 
+    			videoPlayer.src = "https://www.youtube.com/embed/" + videoID; 
 				modal.style.display = "block";
 			}
 

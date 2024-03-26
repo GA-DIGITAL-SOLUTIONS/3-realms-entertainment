@@ -22,7 +22,7 @@
 				color: white !important;
 			}
 			.movie-image img {
-				width:500px;
+				width: 500px;
 				height: 600px;
 				border-radius: 5px;
 			}
@@ -50,7 +50,7 @@
 			.button {
 				display: inline-block;
 				padding: 10px 20px;
-				border:1px solid #f68d2e;
+				border: 1px solid #f68d2e;
 				color: #f68d2e;
 				text-decoration: none;
 				border-radius: 5px;
@@ -98,6 +98,13 @@
 				height: 80vh;
 				overflow: auto;
 				background-color: rgba(0, 0, 0, 0.7);
+			}
+
+			.theaters-list {
+				margin: 50px;
+				display: grid;
+				grid-template-columns:1fr 1fr 1fr;
+				gap: 20px;
 			}
 
 			.modal-content {
@@ -166,18 +173,16 @@
 				font-size: 36px;
 			}
 
-			
-
 			@media (max-width: 768px) {
 				.movies-cont {
 					display: grid;
 					grid-template-columns: 1fr;
 				}
 				.movie-image img {
-				width:calc(100vw - 50px);
-				height: auto;
-				border-radius: 5px;
-			}
+					width: calc(100vw - 50px);
+					height: auto;
+					border-radius: 5px;
+				}
 				.modal-content {
 					background-color: #fefefe;
 					margin: 10% auto;
@@ -193,11 +198,7 @@
 				}
 			}
 
-			.theaters-list {
-				margin: 50px;
-				display: flex;
-				gap: 20px;
-			}
+			
 
 			.filter-dropdown select {
 				width: 150px;
@@ -219,7 +220,7 @@
 			.theatre-column {
 				width: 300px;
 				text-align: left;
-				border:1px solid #494949;
+				border: 1px solid #494949;
 				padding: 20px;
 				border-radius: 10px;
 				color: white;
@@ -334,7 +335,7 @@
 				<form method="GET" action="{% url 'movie_synopsis' movie.id %}">
 					<label for="location-filter">Filter by Location:</label><br />
 					<select id="location-filter" name="location">
-						<option value="">All Locations</option>
+						<option value="all">All Locations</option>
 						{% for location in locations %}
 						<option value="{{ location }}">{{ location }}</option>
 						{% endfor %}
@@ -346,7 +347,9 @@
 			<div class="theaters-list">
 				{% for theater in theaters %}
 				<div class="theatre-column">
-					<img src="{{ theater.image.url }}" alt="theater image" />
+					{% if theater.image and theater.image.url %}
+					<img src="{{ theater.image.url }}" alt="{{ theater.name }}" />
+					{% endif %}
 					<h4>{{ theater.name }}</h4>
 					<p>Location: {{ theater.location }}</p>
 					<h5>Showtimes:</h5>

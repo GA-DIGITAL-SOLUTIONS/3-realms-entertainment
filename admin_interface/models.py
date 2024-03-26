@@ -41,7 +41,7 @@ class Theater(models.Model):
     image = models.ImageField(upload_to='theater_images/',null=True,blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name + '---' + self.location
 
 class Showtime(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='showtimes')

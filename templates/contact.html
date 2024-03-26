@@ -119,6 +119,7 @@
 				border-radius: 5px;
 				box-sizing: border-box;
 				background:none;
+				color:white;
 			}
 			.column form button {
 				background-color: #db8126;
@@ -248,6 +249,12 @@
 							referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 					<div class="column">
+
+						{% if messages %}
+						{% for message in messages %}
+							<p>{{ message }}</p>
+						{% endfor %}
+						{% else %}
 						<form method="post" action="sendmail">
 							{% csrf_token %}
 							<input type="text" name="name" placeholder="Your Name" required />
@@ -268,6 +275,8 @@
 								style="height: 200px"></textarea>
 							<button type="submit">Send Message</button>
 						</form>
+					{% endif %}
+						
 					</div>
 				</div>
 			</section>
