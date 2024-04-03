@@ -14,13 +14,15 @@ def movie_list(request):
 
 def latest_movies(request):
     movies = Movie.objects.all()
-    return render(request, 'latest-movies.html', {'movies': movies})
+    contact_info = ContactDetails.objects.all()[0]
+    return render(request, 'latest-movies.html', {'movies': movies,'contact_info': contact_info})
 
 def movie_synopsis(request, movie_id):
     try:
         movie = Movie.objects.get(pk=movie_id)
     except Movie.DoesNotExist:
         movie = None
+    contact_info = ContactDetails.objects.all()[0]
     locations = Theater.objects.values_list('location', flat=True).distinct()
     
     theaters = Theater.objects.filter(showtimes__movie=movie).distinct()
@@ -29,6 +31,7 @@ def movie_synopsis(request, movie_id):
         'movie': movie,
         'theaters': theaters,
         'locations': locations,
+        'contact_info': contact_info
     }
     return render(request, 'movie_synopsis.html', context)
 
@@ -38,28 +41,35 @@ def portfolio_detail(request, movie_id):
         movie = Portfolio.objects.get(pk=movie_id)
     except Portfolio.DoesNotExist:
         movie = None
+    contact_info = ContactDetails.objects.all()[0]
     context = {
         'movie': movie,
+        'contact_info': contact_info
     }
     return render(request, 'portfolio-details.html', context)
 
 def about(request):
-    return render(request, 'about.html')
+    contact_info = ContactDetails.objects.all()[0]
+    return render(request, 'about.html' {'contact_info': contact_info})
 
 def contact(request):
-    return render(request, 'contact.html')
+    contact_info = ContactDetails.objects.all()[0]
+    return render(request, 'contact.html',{'contact_info': contact_info})
 
 def portfolio(request):
+    contact_info = ContactDetails.objects.all()[0]
     movies = Portfolio.objects.all().order_by('-release_date')
-    return render(request, 'portfolio.html',{'movies':movies})
+    return render(request, 'portfolio.html',{'movies':movies,'contact_info': contact_info})
 
 def about(request):
-    return render(request, 'about.html')
+    contact_info = ContactDetails.objects.all()[0]
+    return render(request, 'about.html',{'contact_info': contact_info})
 
 
 def up_movies(request):
+    contact_info = ContactDetails.objects.all()[0]
     upmovies = UpcomingMovie.objects.all()
-    return render(request, 'upcoming-movies.html', {'upmovies': upmovies})
+    return render(request, 'upcoming-movies.html', {'upmovies': upmovies,'contact_info': contact_info})
 
 
 def sendmail(request):
