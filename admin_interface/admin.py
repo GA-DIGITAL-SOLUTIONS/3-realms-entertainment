@@ -3,6 +3,8 @@ from .models import *
 
 from django.contrib.admin import AdminSite
 
+    
+
 class CustomAdminSite(AdminSite):
     site_header = '3 Realms Entertainment'
     index_title = '3-Realms'
@@ -34,6 +36,9 @@ class PortfolioAdmin(admin.ModelAdmin):
     
 # class BannerAdmin(admin.ModelAdmin):
 #     list_display = ('movie',)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('phone','email','address')
+
 
 custom_admin_site.register(Movie, MovieAdmin)
 custom_admin_site.register(Theater, TheaterAdmin)
@@ -41,3 +46,4 @@ custom_admin_site.register(Showtime, ShowtimeAdmin)
 custom_admin_site.register(UpcomingMovie, UpcomingMovieAdmin)
 custom_admin_site.register(Portfolio, PortfolioAdmin)
 custom_admin_site.register(MovieBanner)
+custom_admin_site.register(ContactDetails,ContactAdmin)

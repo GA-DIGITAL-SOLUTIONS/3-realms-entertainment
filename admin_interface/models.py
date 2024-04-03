@@ -16,6 +16,7 @@ class Movie(models.Model):
     release_date = models.DateField()
     language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES)
     trailer_link = models.URLField()
+    censor_rating = models.CharField(max_length = 10)
     image = models.ImageField(upload_to='movie_images/')
     subtitle_language = models.CharField(max_length=100)
 
@@ -81,8 +82,18 @@ class Portfolio(models.Model):
         'TAMIL': 'TAMIL',
     }
 
-    title = models.CharField(max_length=100)
-    language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES)
+    title = models.CharField(max_length=100,null=True,blank=True)
+    genere = models.CharField(max_length=100,null=True,blank=True)
+    description = models.TextField(null=True,blank=True)
+    runtime = models.CharField(max_length = 20,null=True,blank=True)
+    actor = models.CharField(max_length = 100,null=True,blank=True)
+    actress = models.CharField(max_length = 100,null=True,blank=True)
+    director = models.CharField(max_length=100,null=True,blank=True)
+    release_date = models.DateField(null=True,blank=True)
+    movie_languages = models.CharField(max_length = 200,blank=True,null=True)
+    language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES,null=True,blank=True)
+    censor_rating = models.CharField(max_length = 10,null=True,blank=True)
+    subtitle_language = models.CharField(max_length=100,null=True,blank=True)
     image = models.ImageField(upload_to='portfolio_images/')
 
     def __str__(self):
@@ -121,3 +132,11 @@ class MovieBanner(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete(save=False)
         super(MovieBanner, self).delete(*args, **kwargs)
+
+
+
+class ContactDetails(models.Model):
+    phone = models.CharField(max_length=15)
+    email = models.CharField(max_length=100)
+    address = models.TextField()
+

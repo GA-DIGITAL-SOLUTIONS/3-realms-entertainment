@@ -12,5 +12,6 @@ urlpatterns = [
     path('up-movies', views.up_movies, name='up-movies'),
     path('latest-movies', views.latest_movies, name='latest_movies'),
     path('sendmail', views.sendmail, name='sendmail'),
+    path('upload', views.upload_excel, name='upload'),
     
 ]

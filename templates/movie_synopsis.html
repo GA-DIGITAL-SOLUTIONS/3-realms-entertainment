@@ -103,7 +103,7 @@
 			.theaters-list {
 				margin: 50px;
 				display: grid;
-				grid-template-columns:1fr 1fr 1fr;
+				grid-template-columns: 1fr 1fr 1fr;
 				gap: 20px;
 			}
 
@@ -173,6 +173,13 @@
 				font-size: 36px;
 			}
 
+			.censor-rating {
+				border: 2px solid #df6d25;
+				padding: 18px 10px;
+				margin-left: 20px !important;
+				border-radius: 100%;
+			}
+
 			@media (max-width: 768px) {
 				.movies-cont {
 					display: grid;
@@ -197,8 +204,6 @@
 					height: 100% !important;
 				}
 			}
-
-			
 
 			.filter-dropdown select {
 				width: 150px;
@@ -263,6 +268,12 @@
 					flex-direction: column;
 					gap: 20px;
 				}
+				.censor-rating {
+					border: 2px solid #df6d25;
+					padding: 18px 10px;
+					margin-left: 0px !important;
+					border-radius: 100%;
+				}
 			}
 		</style>
 	</head>
@@ -290,6 +301,9 @@
 							<i class="far fa-calendar-alt icon"></i>
 							<p>{{ movie.release_date }}</p>
 						</div>
+						<div class="movie-info">
+							<p class="censor-rating">{{ movie.censor_rating }}</p>
+						</div>
 					</div>
 					<div class="text-left mt-4">
 						<p>{{ movie.description }}</p>
@@ -307,6 +321,7 @@
 							<strong>Subtitle Language:</strong> {{ movie.subtitle_language }}
 						</p>
 					</div>
+
 					<div class="text-left mt-4">
 						<a
 							href="#"
@@ -332,21 +347,21 @@
 		</div>
 		<div class="container" id="buy">
 			<div class="filter-dropdown">
-				<form method="GET" action="{% url 'movie_synopsis' movie.id %}">
-					<label for="location-filter">Filter by Location:</label><br />
-					<select id="location-filter" name="location">
-						<option value="all">All Locations</option>
-						{% for location in locations %}
-						<option value="{{ location }}">{{ location }}</option>
-						{% endfor %}
-					</select>
-					<button type="submit">Apply Filter</button>
-				</form>
+				<label for="location-filter">Filter by Location:</label><br />
+				<select
+					id="location-filter"
+					name="location"
+					onchange="updateFilter(this.value)">
+					<option value="all">All Locations</option>
+					{% for location in locations %}
+					<option value="{{ location }}">{{ location }}</option>
+					{% endfor %}
+				</select>
 			</div>
 
 			<div class="theaters-list">
 				{% for theater in theaters %}
-				<div class="theatre-column">
+				<div class="theatre-column {{theater.location}} all">
 					{% if theater.image and theater.image.url %}
 					<img src="{{ theater.image.url }}" alt="{{ theater.name }}" />
 					{% endif %}
@@ -369,14 +384,15 @@
 			</div>
 		</div>
 
+		<div class="footer">{% include "footer.html" %}</div>
+
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 		<script>
 			function openModal(videoUrl) {
 				var modal = document.getElementById("myModal");
 				var videoPlayer = document.getElementById("videoPlayer");
-
-				videoPlayer.src = videoUrl;
-
+				var videoID = videoUrl.match(/youtu\.be\/([^\?]*)/)[1];
+				videoPlayer.src = "https://www.youtube.com/embed/" + videoID;
 				modal.style.display = "block";
 			}
 
@@ -386,6 +402,21 @@
 
 				videoPlayer.src = "";
 				modal.style.display = "none";
+			}
+
+			function updateFilter(location) {
+				const movies = document.querySelectorAll(".theatre-column");
+				movies.forEach((movie) => {
+					if (location === "all") {
+						movie.style.display = "block";
+					} else {
+						if (movie.classList.contains(location)) {
+							movie.style.display = "block";
+						} else {
+							movie.style.display = "none";
+						}
+					}
+				});
 			}
 		</script>
 	</body>

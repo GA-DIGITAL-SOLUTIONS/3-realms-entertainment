@@ -218,15 +218,15 @@
 						<h2>{{ movie.title }}</h2>
 						<p>{{ movie.description }}</p>
 						<div>
-						<a
-							href="#"
-							class="button"
-							onclick="openModal('{{ movie.trailer_link }}')"
-							>Watch Now</a
-						>
-						<a href="{% url 'movie_synopsis' movie.id %}" class="button"
-							>Book Now</a
-						>
+							<a
+								href="#"
+								class="button"
+								onclick="openModal('{{ movie.trailer_link }}')"
+								>Watch Trailer</a
+							>
+							<a href="{% url 'movie_synopsis' movie.id %}" class="button"
+								>Book Now</a
+							>
 						</div>
 					</div>
 				</div>
@@ -249,9 +249,8 @@
 			function openModal(videoUrl) {
 				var modal = document.getElementById("myModal");
 				var videoPlayer = document.getElementById("videoPlayer");
-
-				videoPlayer.src = videoUrl;
-
+				var videoID = videoUrl.match(/youtu\.be\/([^\?]*)/)[1];
+				videoPlayer.src = "https://www.youtube.com/embed/" + videoID;
 				modal.style.display = "block";
 			}
 
