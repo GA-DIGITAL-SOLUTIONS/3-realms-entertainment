@@ -89,8 +89,8 @@ body {
     margin: 0;
     padding: 0;
     width:100vw;
-				overflow-x:hidden;
-				overflow-y:auto;
+	overflow-x:hidden;
+    overflow-y:auto;
 }
 
 .title{
@@ -138,9 +138,181 @@ body {
     }
 }
 
+			* {
+				font-family: "Quicksand";
+			}
 
+			.movie-item {
+				margin: 20px auto;
+				background-color: #eee;
+				height: 400px !important;
+				width: 300px !important;
+			}
 
-</style>
+			.movies-cont {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+			}
+
+			.background-image {
+				width: 100%;
+				height: auto;
+				border-radius: 10px;
+				transition: filter 0.3s ease;
+				position: relative;
+				z-index: 0; /* Ensure the image is behind the overlay */
+			}
+
+			.overlay {
+				opacity: 0;
+				transition: opacity 0.3s ease; /* Adding transition for smooth opacity change */
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.overlay:hover {
+				opacity: 1;
+				padding: 15px;
+				background: rgba(0, 0, 0, 0.9);
+				height: 400px;
+				z-index: 1;
+			}
+
+			.overlay h2 {
+				margin-top: 20px;
+				text-align: left;
+				color: #ff9900;
+			}
+
+			.overlay p {
+				margin: 10px 0;
+				text-align: justify;
+			}
+
+			.button {
+				border: 1px solid #ff9900;
+				padding: 10px 20px;
+				text-align: center;
+				color: white;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin-top: 10px;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			.button:hover {
+				background-color: #ff9900;
+				border: none;
+				color: #fff;
+				padding: 10px 20px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin-top: 10px;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 9999;
+				left: 0;
+				top: 0;
+				width: 60vw;
+				height: 80vh;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.7);
+			}
+
+			.modal-content {
+				background-color: #fefefe;
+				margin: 10% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 60vw !important;
+				height: 70% !important;
+			}
+
+			.modal-content iframe {
+				width: calc(60vw - 40px) !important;
+				height: 100% !important;
+			}
+
+			.close {
+				color: #aaa;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+
+			.close:hover,
+			.close:focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.banner {
+				position: relative;
+				margin-bottom: 50px;
+				padding: 0px;
+				margin: 0px 0px 50px 0px;
+			}
+			.banner img {
+				width: 100%;
+				height: 400px;
+				padding: 0px;
+				margin: 0px;
+			}
+			.banner-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				color: white;
+				width: 100%;
+			}
+			.banner-text h1 {
+				margin: 0;
+				font-size: 36px;
+			}
+
+			@media (max-width: 768px) {
+				.movies-cont {
+					display: grid;
+					grid-template-columns: 1fr;
+				}
+				.modal-content {
+					background-color: #fefefe;
+					margin: 10% auto;
+					padding: 20px;
+					border: 1px solid #888;
+					width: 90vw !important;
+					height: 40% !important;
+				}
+
+				.modal-content iframe {
+					width: calc(90vw - 40px) !important;
+					height: 100% !important;
+				}
+				.banner img {
+					height: 200px;
+				}
+                body {
+    background-color: #191717 !important;
+    margin: 0;
+    padding: 0;
+    width:99vw !important;
+	overflow-x:hidden;
+    overflow-y:auto;
+}
+			}
+		</style>
 </head>
 <body>
      {% include "header.html" with active_page="portfolio" %}
@@ -167,13 +339,24 @@ body {
 <!-- Movie items -->
 <div class="movies">
 
-     
-
     {% for movie in movies%}
-    <div class="movie {{movie.language}} all">
-        <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
-    </div>
-    {% endfor %}
+				<div
+					class="movie-item movie {{movie.language}} all"
+					style="
+					background-image: url('{{movie.image.url}}');
+                    background-size:cover;
+                    background-repeat:no-repeat;
+				">
+					<div class="overlay">
+						<h2>{{ movie.title }}</h2>
+						<p>{{ movie.description }}</p>
+						<div>
+							<a href="{% url 'portfolio_detail' movie.id %}" class="button">Read More</a>
+						</div>
+					</div>
+				</div>
+
+				{% endfor %}
 
 </div>
 </div>

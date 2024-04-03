@@ -94,7 +94,7 @@ class Portfolio(models.Model):
     language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES,null=True,blank=True)
     censor_rating = models.CharField(max_length = 10,null=True,blank=True)
     subtitle_language = models.CharField(max_length=100,null=True,blank=True)
-    image = models.ImageField(upload_to='portfolio_images/')
+    image = models.ImageField(upload_to='portfolio_images/',null=True,blank=True)
 
     def __str__(self):
         return self.title

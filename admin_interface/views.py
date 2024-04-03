@@ -9,7 +9,8 @@ def movie_list(request):
     banners = MovieBanner.objects.all()
     upmovies = UpcomingMovie.objects.filter().order_by('-release_date')[:4]
     movies = Movie.objects.filter().order_by('-release_date')[:4]
-    return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies,'banners':banners})
+    contact_info = ContactDetails.objects.all()[0]
+    return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies,'banners':banners,'contact_info': contact_info})
 
 def latest_movies(request):
     movies = Movie.objects.all()
@@ -31,6 +32,17 @@ def movie_synopsis(request, movie_id):
     }
     return render(request, 'movie_synopsis.html', context)
 
+
+def portfolio_detail(request, movie_id):
+    try:
+        movie = Portfolio.objects.get(pk=movie_id)
+    except Portfolio.DoesNotExist:
+        movie = None
+    context = {
+        'movie': movie,
+    }
+    return render(request, 'portfolio-details.html', context)
+
 def about(request):
     return render(request, 'about.html')
 
@@ -38,15 +50,12 @@ def contact(request):
     return render(request, 'contact.html')
 
 def portfolio(request):
-    movies = Portfolio.objects.all()
+    movies = Portfolio.objects.all().order_by('-release_date')
     return render(request, 'portfolio.html',{'movies':movies})
 
 def about(request):
     return render(request, 'about.html')
 
-
-def about(request):
-    return render(request, 'about.html')
 
 def up_movies(request):
     upmovies = UpcomingMovie.objects.all()
@@ -73,39 +82,3 @@ def sendmail(request):
         return render(request, 'contact.html')
     else:
         return HttpResponse('Invalid method')
-
-
-import pandas as pd
-
-def upload_excel(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            excel_file = request.FILES['file']
-            df = pd.read_excel(excel_file)
-            for index, row in df.iterrows():
-                portfolio = Portfolio.objects.create(
-                    title=row['title'],
-                    genere=row['genere'],
-                    description=row['description'],
-                    runtime=row['runtime'],
-                    actor=row['actor'],
-                    actress=row['actress'],
-                    director=row['director'],
-                    release_date=row['release_date'],
-                    movie_languages=row['movie_languages'],
-                    language=row['language'],
-                    censor_rating=row['censor_rating'],
-                    subtitle_language=row['subtitle_language'],
-                    image=row['image']
-                )
-                if portfolio:
-                    return HttpResponse('File uploaded successfully')
-    else:
-        form = UploadFileForm()
-    return render(request, 'upload_excel.html', {'form': form})
-
-from django import forms
-
-class UploadFileForm(forms.Form):
-    file = forms.FileField()

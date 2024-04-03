@@ -12,6 +12,7 @@
 				text-align: center;
 				padding: 10px;
 				width: 100vw;
+				overflow:hidden;
 			}
 
 			.footer .footer-columns {
@@ -127,7 +128,6 @@
 					grid-template-columns: 1fr;
 					gap: 10px;
 					place-items:left;
-					padding:10px;
 				}
 				.footer .footer-column {
 					padding: 0px !important;
@@ -182,7 +182,7 @@
 								<i class="fas fa-phone" style="margin-right: 10px"></i>
 								<p class="line-text">
 									<b>Phone:</b>
-									<span class="phone-number"><br />15257675948</span>
+									<span class="phone-number"><br />{{ contact_info.phone }}</span>
 								</p>
 							</li>
 
@@ -191,7 +191,7 @@
 								<p class="line-text">
 									<b>Email:</b>
 									<span class="email:"
-										><br />contact@3realmsentertainment.com</span
+										><br />{{ contact_info.email }}</span
 									>
 								</p>
 							</li>
@@ -201,7 +201,7 @@
 								<p class="line-text">
 									<b>Address:</b>
 									<span class="address:">
-										<br />Wisthoffweg Essen 45139,Germany</span
+										<br />{{ contact_info.address }}</span
 									>
 								</p>
 							</li>
