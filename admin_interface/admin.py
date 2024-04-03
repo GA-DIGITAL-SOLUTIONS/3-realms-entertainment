@@ -31,8 +31,9 @@ class UpcomingMovieAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title','release_date',)
     search_fields = ('title',)
+    date_hierarchy = 'release_date'
     
 # class BannerAdmin(admin.ModelAdmin):
 #     list_display = ('movie',)

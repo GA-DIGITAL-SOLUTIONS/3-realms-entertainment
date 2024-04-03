@@ -13,7 +13,7 @@ def movie_list(request):
     return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies,'banners':banners,'contact_info': contact_info})
 
 def latest_movies(request):
-    movies = Movie.objects.all()
+    movies = Movie.objects.all().order_by('-release_date')
     contact_info = ContactDetails.objects.all()[0]
     return render(request, 'latest-movies.html', {'movies': movies,'contact_info': contact_info})
 
@@ -53,7 +53,7 @@ def contact(request):
     return render(request, 'contact.html',{'contact_info': contact_info})
 
 def portfolio(request):
-    contact_info = ContactDetails.objects.all()[0]
+    contact_info = ContactDetails.objects.first()
     movies = Portfolio.objects.all().order_by('-release_date')
     return render(request, 'portfolio.html',{'movies':movies,'contact_info': contact_info})
 
@@ -64,7 +64,7 @@ def about(request):
 
 def up_movies(request):
     contact_info = ContactDetails.objects.all()[0]
-    upmovies = UpcomingMovie.objects.all()
+    upmovies = UpcomingMovie.objects.all().order_by('-release_date')
     return render(request, 'upcoming-movies.html', {'upmovies': upmovies,'contact_info': contact_info})
 
 
