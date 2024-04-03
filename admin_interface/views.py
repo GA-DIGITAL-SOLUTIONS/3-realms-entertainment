@@ -48,10 +48,6 @@ def portfolio_detail(request, movie_id):
     }
     return render(request, 'portfolio-details.html', context)
 
-def about(request):
-    contact_info = ContactDetails.objects.all()[0]
-    return render(request, 'about.html' {'contact_info': contact_info})
-
 def contact(request):
     contact_info = ContactDetails.objects.all()[0]
     return render(request, 'contact.html',{'contact_info': contact_info})
