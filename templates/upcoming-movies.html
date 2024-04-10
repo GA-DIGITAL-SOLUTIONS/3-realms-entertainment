@@ -63,6 +63,8 @@
 				border: none;
 				height: 400px !important;
 				cursor: pointer;
+				height: 400px !important;
+				width: 300px !important;
 			}
 
 			.up-container .movie h2 {
@@ -94,9 +96,12 @@
 			.up-container .movies-list {
 				margin: 25px;
 				width: calc(100vw - 50px) !important;
-				display: grid;
-				grid-template-columns: 1fr 1fr 1fr 1fr;
-				gap: 20px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 25px;
+				margin-top: 10px;
+				justify-content: center;
+				align-items: center;
 			}
 			.up-container .button {
 				background: linear-gradient(to right, orange, yellow);
@@ -113,19 +118,16 @@
 			}
 
 			@media (max-width: 768px) {
-				.up-container .movies-list {
-					grid-template-columns: 1fr;
-				}
 				.banner img {
 					height: 200px !important;
 				}
 				.movie {
-					height:auto !important;
-					margin:10px;
+					height: auto !important;
+					margin: 10px;
 				}
-				.movies-list{
+				.movies-list {
 					margin: 50px;
-					width:calc(100vw - 50px) !important;
+					width: calc(100vw - 50px) !important;
 				}
 			}
 		</style>

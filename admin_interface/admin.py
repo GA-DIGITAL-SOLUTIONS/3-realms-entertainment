@@ -39,6 +39,9 @@ class PortfolioAdmin(admin.ModelAdmin):
 #     list_display = ('movie',)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('phone','email','address')
+    
+class CounterAdmin(admin.ModelAdmin):
+    list_display = ('moviesReleased','theaters','cities','partners')
 
 
 custom_admin_site.register(Movie, MovieAdmin)
@@ -48,3 +51,4 @@ custom_admin_site.register(UpcomingMovie, UpcomingMovieAdmin)
 custom_admin_site.register(Portfolio, PortfolioAdmin)
 custom_admin_site.register(MovieBanner)
 custom_admin_site.register(ContactDetails,ContactAdmin)
+custom_admin_site.register(counterItems,CounterAdmin)

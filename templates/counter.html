@@ -2,130 +2,109 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			.section-counter {
+				background-image: url("{% get_media_prefix %}counter-bg.jpg");
+				background-size: cover;
+				background-position: center;
+				padding: 100px 0;
+			}
 
-.section-counter {
-    background-image: url('{% get_media_prefix %}counter-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 0;
-}
+			.section-counter .container {
+				width: 80%;
+				max-width: 1200px;
+				margin: 0 auto;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+			}
 
-.section-counter .container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-}
+			.section-counter .left-column {
+				width: 50%;
+				padding-right: 20px;
+			}
 
-.section-counter .left-column {
-    width: 50%;
-    padding-right: 20px;
-}
+			.section-counter .counter {
+				background-color: rgba(255, 255, 255, 0.5);
+				border-radius: 10px;
+				padding: 20px;
+				text-align: center;
+				margin-bottom: 20px;
+				width: 350px;
+				height: 120px;
+			}
 
-.section-counter .counter {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-    width: 350px;
-    height:120px;
-}
+			.section-counter .counter h3 {
+				margin-top: 0;
+				color: black;
+			}
 
-.section-counter .counter h3 {
-    margin-top: 0;
-    color:black;
-}
+			.section-counter .counter-item {
+				width: 100%;
+				float: left;
+				color: black;
+				font-weight: 700;
+				font-size: 24px;
+			}
 
-.section-counter .counter-item {
-    width: 100%;
-    float: left;
-    color: black;
-    font-weight: 700;
-    font-size:24px;
-}
+			.section-counter .counter-item div {
+				font-size: 24px;
+				font-weight: bold;
+				color: #333;
+			}
+			.counter-item {
+				text-align: center;
+			}
 
-.section-counter .counter-item div {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
-.counter-item {
-    text-align:center;
-}
+			@media (max-width: 786px) {
+				.left-column .counter {
+					width: 150px;
+					height: 100px;
+				}
+				.left-column .counter h3 {
+					font-size: 20px;
+				}
 
-@media(max-width:786px){
-    .left-column .counter{
-        width:150px;
-        height:100px;
-    }
-    .left-column .counter h3{
-        font-size: 20px;
-    }
-
-    .left-column .counter-item{
-        font-size:18px;
-        color: #df6d25;
-        font-weight:700;
-    }
-    .section-counter img{
-        height:400px;
-    }
-    .section-counter {
-    background-image: url('{% get_media_prefix %}counter-mobile-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 0;
-}
-}
-</style>
-</head>
-<body>
-    <section class="section-counter">
-    <div class="container">
-        <div class="left-column">
-            <div class="counter">
-                <h3>Movies Released</h3>
-                <div class="counter-item" id="counter1">25+</div>
-            </div>
-            <div class="counter">
-                <h3>Theaters</h3>
-                <div class="counter-item" id="counter2">10+</div>
-            </div>
-            <div class="counter">
-                <h3>Cities</h3>
-                <div class="counter-item" id="counter3">20+</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    function startCounters() {
-        startCounter(25, 'counter1'); // Start Counter 1 from 100
-        startCounter(10, 'counter2'); // Start Counter 2 from 200
-        startCounter(20, 'counter3'); // Start Counter 3 from 300
-    }
-
-    function startCounter(startValue, elementId) {
-        var counterElement = document.getElementById(elementId);
-        var count = 0;
-        var interval = setInterval(function () {
-            count++;
-            counterElement.innerHTML = count;
-            if (count === startValue) {
-                clearInterval(interval);
-            }
-        }, 50);
-    }
-
-    startCounters(); // Start all counters
-</script>
-</body>
+				.left-column .counter-item {
+					font-size: 18px;
+					color: #df6d25;
+					font-weight: 700;
+				}
+				.section-counter img {
+					height: 400px;
+				}
+				.section-counter {
+					background-image: url("{% get_media_prefix %}counter-mobile-bg.jpg");
+					background-size: cover;
+					background-position: center;
+					padding: 100px 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<section class="section-counter">
+			<div class="container">
+				<div class="left-column">
+					<div class="counter">
+						<h3>Movies Released</h3>
+						<div class="counter-item" id="counter1">
+							{{counter.moviesReleased}}
+						</div>
+					</div>
+					<div class="counter">
+						<h3>Theaters</h3>
+						<div class="counter-item" id="counter2">{{counter.theaters}}</div>
+					</div>
+					<div class="counter">
+						<h3>Cities</h3>
+						<div class="counter-item" id="counter3">{{counter.cities}}</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
 </html>

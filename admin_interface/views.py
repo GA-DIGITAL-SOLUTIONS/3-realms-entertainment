@@ -10,7 +10,8 @@ def movie_list(request):
     upmovies = UpcomingMovie.objects.filter().order_by('-release_date')[:4]
     movies = Movie.objects.filter().order_by('-release_date')[:4]
     contact_info = ContactDetails.objects.all()[0]
-    return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies,'banners':banners,'contact_info': contact_info})
+    counter = counterItems.objects.first()
+    return render(request, 'home.html', {'movies': movies, 'upmovies': upmovies,'banners':banners,'contact_info': contact_info,'counter':counter})
 
 def latest_movies(request):
     movies = Movie.objects.all().order_by('-release_date')
@@ -59,7 +60,8 @@ def portfolio(request):
 
 def about(request):
     contact_info = ContactDetails.objects.all()[0]
-    return render(request, 'about.html',{'contact_info': contact_info})
+    counter = counterItems.objects.first()
+    return render(request, 'about.html',{'contact_info': contact_info,'counter':counter})
 
 
 def up_movies(request):

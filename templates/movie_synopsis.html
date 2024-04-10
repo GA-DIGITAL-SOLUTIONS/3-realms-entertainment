@@ -20,6 +20,8 @@
 			body {
 				background-color: #191717 !important;
 				color: #fff;
+				width:100vw;
+				overflow-x:hidden;
 			}
 			.container {
 				padding: 50px;
@@ -106,9 +108,11 @@
 
 			.theaters-list {
 				margin: 50px;
-				display: grid;
-				grid-template-columns: 1fr 1fr 1fr;
+				display: flex;
+				justify-content: center;
 				gap: 20px;
+				flex-direction: row;
+				flex-wrap: wrap;
 			}
 
 			.modal-content {
@@ -184,6 +188,12 @@
 				border-radius: 100%;
 			}
 
+			pre{
+				font-family: Arial, sans-serif !important;
+				line-height: 2.5;
+    			font-size: 16px !important; 
+			}
+
 			@media (max-width: 768px) {
 				.movies-cont {
 					display: grid;
@@ -244,18 +254,19 @@
 			.theatre-column a {
 				display: flex;
 				justify-content: left;
-				align-items: left;
 				border: 1px solid #494949;
-				margin: 5px;
 				padding: 5px 20px;
 				border-radius: 5px;
 				color: white;
 				list-style: none;
 				text-align: left;
+				background-color: #df6d25;
+				color: white;
+				text-decoration: none;
+				margin-top:10px;
 			}
 
 			.theatre-column a:hover {
-				background-color: #df6d25;
 				color: white;
 				text-decoration: none;
 			}
@@ -266,12 +277,7 @@
 					align-items: start;
 					gap: 15px;
 				}
-				.theaters-list {
-					margin: 10px;
-					display: flex;
-					flex-direction: column;
-					gap: 20px;
-				}
+				
 				.censor-rating {
 					border: 2px solid #df6d25;
 					padding: 18px 10px;
@@ -313,10 +319,11 @@
 						<p>{{ movie.description }}</p>
 					</div>
 					<div class="cast text-left mt-4">
-						<h4 class="cast">Star Cast:</h4>
+						<h4>Star Cast:</h4>
 						<p class="cast"><strong>Actor:</strong> {{ movie.actor }}</p>
 						<p class="cast"><strong>Actress:</strong> {{ movie.actress }}</p>
 						<p class="cast"><strong>Director:</strong> {{ movie.director }}</p>
+						<p class="cast" ><pre style="color:#cdcaca;text-decoration:none">{{ movie.star_cast}}</pre></p>
 					</div>
 					<div class="text-left mt-4">
 						<h4>Languages:</h4>

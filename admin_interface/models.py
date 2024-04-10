@@ -1,4 +1,8 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 
 class Movie(models.Model):
     LANGUAGE_CHOICES = {
@@ -12,6 +16,7 @@ class Movie(models.Model):
     runtime = models.CharField(max_length = 20)
     actor = models.CharField(max_length = 100)
     actress = models.CharField(max_length = 100)
+    star_cast = models.TextField(null=True,blank=True)
     director = models.CharField(max_length=100)
     release_date = models.DateField()
     language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES)
@@ -82,19 +87,20 @@ class Portfolio(models.Model):
         'TAMIL': 'TAMIL',
     }
 
-    title = models.CharField(max_length=100,null=True,blank=True)
-    genere = models.CharField(max_length=100,null=True,blank=True)
-    description = models.TextField(null=True,blank=True)
-    runtime = models.CharField(max_length = 20,null=True,blank=True)
-    actor = models.CharField(max_length = 100,null=True,blank=True)
-    actress = models.CharField(max_length = 100,null=True,blank=True)
-    director = models.CharField(max_length=100,null=True,blank=True)
-    release_date = models.DateField(null=True,blank=True)
-    movie_languages = models.CharField(max_length = 200,blank=True,null=True)
-    language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES,null=True,blank=True)
-    censor_rating = models.CharField(max_length = 10,null=True,blank=True)
-    subtitle_language = models.CharField(max_length=100,null=True,blank=True)
-    image = models.ImageField(upload_to='portfolio_images/',null=True,blank=True)
+    title = models.CharField(max_length=100,)
+    genere = models.CharField(max_length=100,)
+    description = models.TextField()
+    runtime = models.CharField(max_length = 20,)
+    actor = models.CharField(max_length = 100,)
+    actress = models.CharField(max_length = 100,)
+    star_cast = models.TextField(null=True,blank=True)
+    director = models.CharField(max_length=100,)
+    release_date = models.DateField()
+    movie_languages = models.CharField(max_length = 200,)
+    language = models.CharField(max_length = 50,choices = LANGUAGE_CHOICES,)
+    censor_rating = models.CharField(max_length = 10)
+    subtitle_language = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='portfolio_images/')
 
     def __str__(self):
         return self.title
@@ -111,6 +117,27 @@ class Portfolio(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete(save=False)
         super(Portfolio, self).delete(*args, **kwargs)
+
+
+@receiver(post_save, sender=Movie)
+def create_portfolio(sender, instance, created, **kwargs):
+    if created:
+        Portfolio.objects.create(
+            title=instance.title,
+            genere=instance.genere,
+            description=instance.description,
+            runtime=instance.runtime,
+            actor=instance.actor,
+            actress=instance.actress,
+            director=instance.director,
+            release_date=instance.release_date,
+            language=instance.language,
+            trailer_link=instance.trailer_link,
+            censor_rating=instance.censor_rating,
+            image=instance.image,
+            subtitle_language=instance.subtitle_language,
+            star_cast = instance.star_cast
+        )
 
 
 class MovieBanner(models.Model):
@@ -140,3 +167,8 @@ class ContactDetails(models.Model):
     email = models.CharField(max_length=100)
     address = models.TextField()
 
+class counterItems(models.Model):
+    moviesReleased = models.IntegerField()
+    theaters = models.IntegerField()
+    cities = models.IntegerField()
+    partners = models.IntegerField()

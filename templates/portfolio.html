@@ -59,10 +59,12 @@
 }
 
 .movies {
-    display: grid;
-    grid-template-columns:1fr 1fr 1fr 1fr !important;
+    display: flex;
+    flex-wrap:wrap;
     gap: 25px;
     margin-top:10px;
+	justify-content:center;
+	align-items:center;
 }
 
 .movie{
@@ -105,9 +107,12 @@ body {
     .movies {
         justify-content: center;
         margin:15px;
-        grid-template-columns:1fr !important;
-        place-items:center;
     }
+
+	.potfolio-section {
+    padding: 25px;
+    background-color: #191717;
+}
 
     .movie img {
         width: 250px;
