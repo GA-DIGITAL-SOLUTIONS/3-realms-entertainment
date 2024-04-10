@@ -323,7 +323,7 @@
 						<p class="cast"><strong>Actor:</strong> {{ movie.actor }}</p>
 						<p class="cast"><strong>Actress:</strong> {{ movie.actress }}</p>
 						<p class="cast"><strong>Director:</strong> {{ movie.director }}</p>
-						<p class="cast" ><pre style="color:#cdcaca;text-decoration:none">{{ movie.star_cast}}</pre></p>
+						<p class="cast" ><pre style="color:#cdcaca;text-decoration:none">{{ movie.star_cast | default:""}}</pre></p>
 					</div>
 					<div class="text-left mt-4">
 						<h4>Languages:</h4>
